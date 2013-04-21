@@ -1,0 +1,5 @@
+#EXAMPLE FILE - File loading system currently not in place.
+
+#This file will define what font corresponds to what set of features in the game.
+#Interface: In the project's current state, everything.
+[INTERFACE = telegrama_render.otf]
