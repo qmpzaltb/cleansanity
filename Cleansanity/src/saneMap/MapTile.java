@@ -5,4 +5,8 @@ package saneMap;
  */
 public class MapTile {
 
+	boolean tileIsOpen;
+	
+	int tileFluidCapacity;
+	
 }
