@@ -13,13 +13,14 @@ public class RunSanity {
 	public static void main(String[] args){
 		
 		GameMainWindow.createWindow();
-		
+		GameMainWindow.setTitle("Cleansanity");
 		
 		
 		while (!GameMainWindow.closeRequested){
 			GameMainWindow.updateGraphics();
 		}
 		
+		System.exit(0);
 		
 	}
 	

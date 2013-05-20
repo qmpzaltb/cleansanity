@@ -1,6 +1,6 @@
 package saneLibrary;
 
-public class EntityLibrary {
+public class EntityLibrary extends Library{
 	
 	private static int nameWritingIndex;
 	private static String[] entityNames;
@@ -11,13 +11,5 @@ public class EntityLibrary {
 		entityNames = new String[number];
 	}
 	
-	public static void addNextName(String newName){
-		entityNames[nameWritingIndex] = newName;
-		nameWritingIndex ++;
-	}
-	
-	public static String getNameOfID(int ID){
-		return entityNames[ID];
-	}
 	
 }

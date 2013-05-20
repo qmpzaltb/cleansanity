@@ -24,8 +24,8 @@ import org.newdawn.slick.util.ResourceLoader;
 public class GameMainWindow {
 
 	public static int framesPerSecond = 60;
-	public static int xResolution = 600;
-	public static int yResolution = 300;
+	public static int xResolutionDefault = 600;
+	public static int yResolutionDefault = 300;
 
 	public static boolean closeRequested;
 
@@ -47,7 +47,7 @@ public class GameMainWindow {
 
 		try {
 
-			Display.setDisplayMode(new DisplayMode(xResolution , yResolution));
+			Display.setDisplayMode(new DisplayMode(xResolutionDefault , yResolutionDefault));
 			Display.create();
 
 			windowCreated = true;
@@ -87,14 +87,20 @@ public class GameMainWindow {
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 
-		GL11.glViewport(0,0,xResolution,yResolution);
+		GL11.glViewport(0,0,xResolutionDefault,yResolutionDefault);
 		GL11.glMatrixMode(GL11.GL_MODELVIEW);
 
 		GL11.glMatrixMode(GL11.GL_PROJECTION);
 		GL11.glLoadIdentity();
-		GL11.glOrtho(0, xResolution, yResolution, 0, 100, -100);
+		GL11.glOrtho(0, xResolutionDefault, yResolutionDefault, 0, 100, -100);
 		GL11.glMatrixMode(GL11.GL_MODELVIEW);
+		
+		Display.setResizable(true);
+		
+	}
 
+	public static void setTitle(String title){
+		Display.setTitle(title);
 	}
 
 
@@ -129,6 +135,12 @@ public class GameMainWindow {
 		closeRequested = Display.isCloseRequested();
 	}
 
+	public static int getXRes(){
+		return Display.getWidth();
+	}
+	public static int getYRes(){
+		return Display.getHeight();
+	}
 
 
 }
