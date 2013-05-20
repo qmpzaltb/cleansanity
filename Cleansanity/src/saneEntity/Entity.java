@@ -7,7 +7,5 @@ package saneEntity;
 public class Entity {
 
 	private Meter[] entityMeters;
-	private 
-	
 	
 }
