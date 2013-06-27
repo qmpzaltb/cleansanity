@@ -23,18 +23,25 @@ import org.newdawn.slick.util.ResourceLoader;
 
 public class GameMainWindow {
 
+	//Self explanatory
 	public static int framesPerSecond = 60;
+	
+	//Default resolution
 	public static int xResolutionDefault = 600;
 	public static int yResolutionDefault = 300;
 
+	//Whether something wants the game window to close.
 	public static boolean closeRequested;
 
+	//Whether certain things are currently being drawn.
 	public static boolean drawingGame;
 	public static boolean drawingOverlay;
 	public static boolean drawingMenu;
 
+	//Whether the window has been created
 	private static boolean windowCreated;
 
+	//Different fonts for different things.
 	private static java.awt.Font interfaceFontAWT;
 	private static TrueTypeFont interfaceFontSLICK;
 

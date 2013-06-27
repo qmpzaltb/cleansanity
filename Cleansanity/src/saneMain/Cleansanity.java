@@ -16,7 +16,7 @@ public class Cleansanity {
 	GrandMap theGrandMap;
 	Vector<Entity> theEntities;
 	
-	Entity thePlayerEntity; //A duplicate of the one in theEntities vector! Woo!
+	Entity thePlayerEntity; //A duplicate of the one in theEntities vector! Woo! This is so we know who we are controlling.
 	
 	public static void initializeSanity(){
 		
