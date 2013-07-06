@@ -13,20 +13,27 @@ public class Cleansanity {
 	
 	private static Cleansanity theSanity; //This is what keeps us sane.
 	
-	GrandMap theGrandMap;
+//	GrandMap theGrandMap;
+	MapArea theCurrentMap;
+	
 	Vector<Entity> theEntities;
 	
 	Entity thePlayerEntity; //A duplicate of the one in theEntities vector! Woo! This is so we know who we are controlling.
 	
 	public static void initializeSanity(){
 		
-		
+		theSanity = new Cleansanity();
 		
 	}
 	
 	public Cleansanity(){
 		
+		
 		//theGrandMap equals something. Make a grand map
+		//theGrandMap = new GrandMap();
+		
+		theCurrentMap = new MapArea(0);
+		MapGeneration.generateTerrain(theCurrentMap);
 		
 		//theEntities equals something. Make an entities.
 		
@@ -44,11 +51,15 @@ public class Cleansanity {
 	
 	
 	
-	
+	public MapArea getCurrentMap(){
+		return theCurrentMap;
+	}
 	
 	
 	public static Cleansanity getSanity(){
 		return theSanity;
 	}
+	
+	
 	
 }

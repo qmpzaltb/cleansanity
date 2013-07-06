@@ -12,6 +12,9 @@ public class RunSanity {
 
 	public static void main(String[] args){
 		
+		
+		Cleansanity.initializeSanity();
+		
 		GameMainWindow.createWindow();
 		GameMainWindow.setTitle("Cleansanity");
 		

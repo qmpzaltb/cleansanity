@@ -14,6 +14,9 @@ import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.tiled.Base64.InputStream;
 import org.newdawn.slick.util.ResourceLoader;
 
+import saneMain.Cleansanity;
+import saneMap.MapArea;
+
 /**
  * Handles the game window's actions.
  * Resolution, window state, render states, all handled by this.
@@ -112,13 +115,39 @@ public class GameMainWindow {
 
 
 	public static void updateGraphics(){
+		
+		drawingGame = true;
+		
 		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT); 
-		interfaceFontSLICK.drawString(100, 100, "Bantu philosophy. A taste of Java.");
-		interfaceFontSLICK2.drawString(100, 150, "A telegram, a grandmother.");
+		interfaceFontSLICK.drawString(100, 100, "What what what what what what");
+		interfaceFontSLICK2.drawString(100, 150, "? ! ? ! ? ! ? ! ? ! ? ! ? ! ?");
 
+		Cleansanity theSanity = Cleansanity.getSanity();
+		MapArea theMap = theSanity.getCurrentMap();
+		
 		if (drawingGame){
 
 			//DRAW GAME THINGS
+			
+			//Draw the map
+			for (int x = 0; x < theMap.getXSize(); x ++){
+				for (int y = 0; y < theMap.getYSize(); y ++){
+					setGLColour(theMap.getTile(x, y).getFloorColour());
+					int x1 = x * 10;
+					int x2 = x1 + 10;
+					int y1 = y * 10;
+					int y2 = y1 + 10;
+					GL11.glBegin(GL11.GL_QUADS);
+					GL11.glVertex3f(x1, y1, 0);
+					GL11.glVertex3f(x1, y2, 0);
+					GL11.glVertex3f(x2, y2, 0);
+					GL11.glVertex3f(x2, y1, 0);
+					GL11.glEnd();
+				}
+			}
+			
+			
+			
 
 		}
 
@@ -149,5 +178,8 @@ public class GameMainWindow {
 		return Display.getHeight();
 	}
 
+	public static void setGLColour(Colour theColour){
+		GL11.glColor4f(theColour.r(), theColour.g(), theColour.b(), theColour.a());
+	}
 
 }
