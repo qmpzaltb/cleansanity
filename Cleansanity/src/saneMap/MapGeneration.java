@@ -26,12 +26,7 @@ public class MapGeneration {
 		for (int i = 0; i < mapAmtOfPoints; i ++){
 			xCoords[i] = rng.nextInt(theMap.getXSize());
 			yCoords[i] = rng.nextInt(theMap.getYSize());
-			System.out.println(xCoords[i] + " , " + yCoords[i]);
 		}
-
-		System.out.println(theMap);
-		System.out.println(theMap.getXSize() + " x " + theMap.getYSize());
-		System.out.println(theMap.getTile(0, 0));
 		
 		for (int i = 0; i < mapAmtOfPoints; i ++){
 			for (int j = 0; j < mapAmtOfPoints; j ++){
@@ -39,17 +34,10 @@ public class MapGeneration {
 			}
 		}
 
-
 	}
 
 	private static void makePath(MapArea theMap, int x1, int y1, int x2, int y2){
 
-		System.out.println("Parameters: " + x1 + " " + y1 + " " + x2 + " " + y2);
-		
-		System.out.println(theMap);
-		System.out.println(theMap.getXSize() + " x " + theMap.getYSize());
-		System.out.println(theMap.getTile(0, 0));
-		
 		theMap.getTile(x1, y1).setTileType(TileType.FLOOR);
 		theMap.getTile(x2, y2).setTileType(TileType.FLOOR);
 

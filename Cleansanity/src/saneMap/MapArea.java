@@ -33,12 +33,9 @@ public class MapArea {
 		for (int x = 0; x < mapXSize; x++){
 			for (int y = 0; y < mapYSize; y++){
 				mapTiles[x][y] = new MapTile(TileType.WALL);
-				System.out.println("Creating " + x + "," + y);
-				System.out.println(getTile(x,y));
 			}
 		}
 		
-		mapTiles = new MapTile[mapXSize][mapYSize];
 	}
 	
 	public int getXSize(){
