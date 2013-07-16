@@ -19,7 +19,7 @@ public class RunSanity {
 		GameMainWindow.setTitle("Cleansanity");
 		
 		
-		while (!GameMainWindow.closeRequested){
+		while (!GameMainWindow.isCloseRequested()){
 			GameMainWindow.updateGraphics();
 		}
 		
