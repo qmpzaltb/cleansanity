@@ -117,10 +117,12 @@ public class GameMainWindow {
 		GL11.glMatrixMode(GL11.GL_PROJECTION);
 		GL11.glLoadIdentity();
 		GL11.glOrtho(0, currentXRes, currentYRes, 0, 1000, -1000);
-		//GL11.glMatrixMode(GL11.GL_MODELVIEW);
+		GL11.glMatrixMode(GL11.GL_MODELVIEW);
 
 		//Resizability shall be in the form of options!
 		Display.setResizable(false);
+		GL11.glRotatef(32.0f, (float) (currentXRes / 2.0f), 0.0f, 0.0f);
+		GL11.glRotatef(16.0f, 0 ,(float) (currentYRes / 2.0f), 0.0f);
 
 	}
 
