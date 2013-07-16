@@ -15,8 +15,9 @@ public class RunSanity {
 		
 		Cleansanity.initializeSanity();
 		
-		GameMainWindow.createWindow();
 		GameMainWindow.setTitle("Cleansanity");
+		GameMainWindow.createWindow();
+
 		
 		
 		while (!GameMainWindow.isCloseRequested()){
