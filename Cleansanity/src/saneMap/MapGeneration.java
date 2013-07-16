@@ -88,6 +88,12 @@ public class MapGeneration {
 				break;
 			}
 			
+			currentX = Math.max(0, currentX);
+			currentX = Math.min(theMap.getXSize(), currentX);
+			
+			currentY = Math.max(0, currentY);
+			currentY = Math.min(theMap.getYSize(), currentY);
+			
 			theMap.getTile(currentX, currentY).setTileType(TileType.FLOOR);
 			
 		}

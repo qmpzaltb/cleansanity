@@ -32,7 +32,7 @@ public class Cleansanity {
 		//theGrandMap equals something. Make a grand map
 		//theGrandMap = new GrandMap();
 		
-		theCurrentMap = new MapArea(0);
+		theCurrentMap = new MapArea(1);
 		MapGeneration.generateTerrain(theCurrentMap);
 		
 		//theEntities equals something. Make an entities.

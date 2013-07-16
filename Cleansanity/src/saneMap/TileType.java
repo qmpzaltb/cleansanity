@@ -4,11 +4,11 @@ import saneGUI.Colour;
 
 public enum TileType {
 
-	FLOOR(true, true, true, Colour.FLOOR, Colour.NONE, Colour.NONE),
-	WALL(false, false, false, Colour.WALL, Colour.WALL, Colour.WALL),
-	VOID(true, true, true, Colour.VOID, Colour.NONE, Colour.NONE),
-	ENTRANCE(true, true, true, Colour.ENTRANCE, Colour.NONE, Colour.NONE),
-	EXIT(true, true, true, Colour.EXIT, Colour.NONE, Colour.NONE);
+	FLOOR(true, true, true, Colour.FLOOR, null, null),
+	WALL(false, false, false, Colour.WALL, Colour.WALL, null),
+	VOID(true, true, true, Colour.VOID, null, null),
+	ENTRANCE(true, true, true, Colour.ENTRANCE, null, null),
+	EXIT(true, true, true, Colour.EXIT, null, null);
 	
 	boolean isPermeableSolid;
 	boolean isPermeableLiquid;
