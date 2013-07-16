@@ -24,8 +24,8 @@ public class MapGeneration {
 		int[] yCoords = new int[mapAmtOfPoints];
 
 		for (int i = 0; i < mapAmtOfPoints; i ++){
-			xCoords[i] = rng.nextInt(theMap.getXSize());
-			yCoords[i] = rng.nextInt(theMap.getYSize());
+			xCoords[i] = rng.nextInt(theMap.getXSize() - 2) + 1;
+			yCoords[i] = rng.nextInt(theMap.getYSize() - 2) + 1;
 		}
 		
 		for (int i = 0; i < mapAmtOfPoints; i ++){
@@ -88,11 +88,11 @@ public class MapGeneration {
 				break;
 			}
 			
-			currentX = Math.max(0, currentX);
-			currentX = Math.min(theMap.getXSize(), currentX);
+			currentX = Math.max(1, currentX);
+			currentX = Math.min(theMap.getXSize() - 1, currentX);
 			
-			currentY = Math.max(0, currentY);
-			currentY = Math.min(theMap.getYSize(), currentY);
+			currentY = Math.max(1, currentY);
+			currentY = Math.min(theMap.getYSize() - 1, currentY);
 			
 			theMap.getTile(currentX, currentY).setTileType(TileType.FLOOR);
 			
