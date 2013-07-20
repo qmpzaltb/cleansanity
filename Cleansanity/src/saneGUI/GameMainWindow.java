@@ -7,13 +7,13 @@ import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
-
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Font;
 import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.tiled.Base64.InputStream;
 import org.newdawn.slick.util.ResourceLoader;
 
+import saneInput.GameAction;
 import saneMain.Cleansanity;
 import saneMap.MapArea;
 
@@ -55,7 +55,7 @@ public class GameMainWindow {
 	private static int currentYRes = yResolutionDefault;
 
 	public static int tileSize = 20;
-	public static int tileHeight = -20;
+	public static int tileHeight = 20;
 
 	public static void createWindow(){
 
@@ -100,29 +100,34 @@ public class GameMainWindow {
 
 	public static void initGLArea(){
 
-		//		GL11.glEnable(GL11.GL_TEXTURE_2D);
-		//		GL11.glShadeModel(GL11.GL_SMOOTH);       
-		//		GL11.glDisable(GL11.GL_DEPTH_TEST);
-		//		GL11.glDisable(GL11.GL_LIGHTING);                   
-		//
-		//		GL11.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);               
-		//		GL11.glClearDepth(1);                                      
-		//
-		//		GL11.glEnable(GL11.GL_BLEND);
-		//		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		//
-		//		GL11.glViewport(0,0,xResolutionDefault,yResolutionDefault);
-		//		GL11.glMatrixMode(GL11.GL_MODELVIEW);
+//		GL11.glEnable(GL11.GL_TEXTURE_2D);
+//		GL11.glShadeModel(GL11.GL_SMOOTH);       
+//		GL11.glDisable(GL11.GL_DEPTH_TEST);
+//		GL11.glDisable(GL11.GL_LIGHTING);                   
+//
+//		GL11.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);               
+//		GL11.glClearDepth(1);                                      
+//
+//		GL11.glEnable(GL11.GL_BLEND);
+//		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+//
+		GL11.glViewport(0,0,currentXRes,currentYRes);
+//		GL11.glMatrixMode(GL11.GL_MODELVIEW);
 
 		GL11.glMatrixMode(GL11.GL_PROJECTION);
 		GL11.glLoadIdentity();
-		GL11.glOrtho(0, currentXRes, currentYRes, 0, 1000, -1000);
-		GL11.glMatrixMode(GL11.GL_MODELVIEW);
+		//GL11.glOrtho(0, currentXRes, currentYRes, 0, -1000, 1000);
+		
+		
+		float xyRatio = (float)(currentXRes) / (float)(currentYRes);
+		GL11.glFrustum( xyRatio * -1, xyRatio, -1.0, 1.0, 1.5, 10000);
+		//GL11.glMatrixMode(GL11.GL_MODELVIEW);
 
 		//Resizability shall be in the form of options!
 		Display.setResizable(false);
-		GL11.glRotatef(32.0f, (float) (currentXRes / 2.0f), 0.0f, 0.0f);
-		GL11.glRotatef(16.0f, 0 ,(float) (currentYRes / 2.0f), 0.0f);
+		//GL11.glRotatef(32.0f, (float) (currentXRes / 2.0f), 0.0f, 0.0f);
+		//GL11.glRotatef(16.0f, 0 ,(float) (currentYRes / 2.0f), 0.0f);
+
 
 	}
 
@@ -130,12 +135,11 @@ public class GameMainWindow {
 		Display.setTitle(title);
 	}
 
-
 	public static void updateGraphics(){
 
 		// DEBUG statement
 		drawingGame = true;
-
+		
 		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT); 
 
 
@@ -143,10 +147,10 @@ public class GameMainWindow {
 		MapArea theMap = theSanity.getCurrentMap();
 
 		if (drawingGame){
-
 			//DRAW GAME THINGS
 
 			//Draw the map
+			GL11.glBegin(GL11.GL_QUADS);
 			for (int x = 0; x < theMap.getXSize(); x ++){
 				for (int y = 0; y < theMap.getYSize(); y ++){
 
@@ -154,60 +158,54 @@ public class GameMainWindow {
 					int x2 = x1 + tileSize;
 					int y1 = currentYRes - y * tileSize;
 					int y2 = y1 - tileSize;
-					int z1 = 500;
+					int z1 = -1000;
 					int z2 = z1 + tileHeight;
 
 					if (setGLColour(theMap.getTile(x, y).getFloorColour())){
-						GL11.glBegin(GL11.GL_QUADS);
+						
 						GL11.glVertex3f(x1, y1, z1);
 						GL11.glVertex3f(x1, y2, z1);
 						GL11.glVertex3f(x2, y2, z1);
 						GL11.glVertex3f(x2, y1, z1);
-						GL11.glEnd();
+						
 					}
 
 					if (setGLColour(theMap.getTile(x, y).getWallColour())){
-						GL11.glBegin(GL11.GL_QUADS);
+						
 						GL11.glVertex3f(x1, y1, z1);
 						GL11.glVertex3f(x1, y2, z1);
 						GL11.glVertex3f(x1, y2, z2);
 						GL11.glVertex3f(x1, y1, z2);
-						GL11.glEnd();
+						
 
-						GL11.glBegin(GL11.GL_QUADS);
 						GL11.glVertex3f(x2, y1, z1);
 						GL11.glVertex3f(x2, y2, z1);
 						GL11.glVertex3f(x2, y2, z2);
 						GL11.glVertex3f(x2, y1, z2);
-						GL11.glEnd();
-
-						GL11.glBegin(GL11.GL_QUADS);
+						
 						GL11.glVertex3f(x1, y1, z1);
 						GL11.glVertex3f(x2, y1, z1);
 						GL11.glVertex3f(x2, y1, z2);
 						GL11.glVertex3f(x1, y1, z2);
-						GL11.glEnd();
 
-						GL11.glBegin(GL11.GL_QUADS);
 						GL11.glVertex3f(x1, y2, z1);
 						GL11.glVertex3f(x2, y2, z1);
 						GL11.glVertex3f(x2, y2, z2);
 						GL11.glVertex3f(x1, y2, z2);
-						GL11.glEnd();
 					}
 					
 					if (setGLColour(theMap.getTile(x, y).getCeilingColour())){
-						GL11.glBegin(GL11.GL_QUADS);
 						GL11.glVertex3f(x1, y1, z2);
 						GL11.glVertex3f(x1, y2, z2);
 						GL11.glVertex3f(x2, y2, z2);
 						GL11.glVertex3f(x2, y1, z2);
-						GL11.glEnd();
 					}
 
 
 				}
 			}
+			
+			GL11.glEnd();
 
 
 
@@ -236,10 +234,53 @@ public class GameMainWindow {
 
 		//TEXT DRAWING END
 		GL11.glDisable(GL11.GL_BLEND);
-
-
+		
+		
+		
+//		GL11.glTranslatef(1.0f, 0.0f, 0.0f);
+//		GL11.glRotatef(1.0f, 0.0f , 0.0f, 1.0f);
+//		GL11.glRotatef(1.0f, 1.0f , 0.0f, 0.0f);
+//		GL11.glRotatef(1.0f, 1.0f , 0.0f, 0.0f);
+	
+		
+		//Temporary input interfacing (WHICH SHOULD BY NO MEANS BE IN THIS CLASS) for testing purposes
+		//This is so I can orient myself in this cruel, cruel world.
+		
+		float tempVarMoveSpeed = 2.0f;
+		
+		if (GameAction.MOVE_UP.getState()){
+			GL11.glTranslatef(0.0f, -tempVarMoveSpeed, 0.0f);
+		}
+		if (GameAction.MOVE_DOWN.getState()){
+			GL11.glTranslatef(0.0f, tempVarMoveSpeed, 0.0f);
+		}
+		
+		if (GameAction.MOVE_LEFT.getState()){
+			GL11.glTranslatef(tempVarMoveSpeed, 0.0f, 0.0f);
+		}
+		if (GameAction.MOVE_RIGHT.getState()){
+			GL11.glTranslatef(-tempVarMoveSpeed, 0.0f, 0.0f);
+		}
+		
+		if (GameAction.ZOOM_IN.getState()){
+			GL11.glTranslatef(0.0f, 0.0f, tempVarMoveSpeed);
+		}
+		if (GameAction.ZOOM_OUT.getState()){
+			GL11.glTranslatef(0.0f, 0.0f, -tempVarMoveSpeed);
+		}
+		
 		Display.update();
 		Display.sync(framesPerSecond);
+		//GL11.glFlush();
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 	public static int getXRes(){

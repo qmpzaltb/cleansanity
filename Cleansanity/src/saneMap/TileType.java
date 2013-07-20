@@ -5,7 +5,7 @@ import saneGUI.Colour;
 public enum TileType {
 
 	FLOOR(true, true, true, Colour.FLOOR, null, null),
-	WALL(false, false, false, Colour.WALL, Colour.WALL, Colour.GOLD),
+	WALL(false, false, false, Colour.SLIVER, Colour.WALL, Colour.GOLD),
 	VOID(true, true, true, Colour.VOID, null, null),
 	ENTRANCE(true, true, true, Colour.ENTRANCE, null, null),
 	EXIT(true, true, true, Colour.EXIT, null, null);

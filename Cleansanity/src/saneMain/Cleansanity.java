@@ -1,6 +1,8 @@
 package saneMain;
 
+import java.util.Random;
 import java.util.Vector;
+
 import saneMap.*;
 import saneEntity.*;
 //test
@@ -32,7 +34,7 @@ public class Cleansanity {
 		//theGrandMap equals something. Make a grand map
 		//theGrandMap = new GrandMap();
 		
-		theCurrentMap = new MapArea(1);
+		theCurrentMap = new MapArea(0);
 		MapGeneration.generateTerrain(theCurrentMap);
 		
 		//theEntities equals something. Make an entities.

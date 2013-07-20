@@ -1,7 +1,12 @@
 package saneMain;
 
 import saneGUI.GameMainWindow;
+import saneInput.KeyBinding;
+import saneInput.KeyboardHandler;
+
 import java.util.Scanner;
+
+import org.lwjgl.input.Keyboard;
 
 /**
  * Class dedicated to the main method
@@ -14,6 +19,8 @@ public class RunSanity {
 		
 		
 		Cleansanity.initializeSanity();
+		KeyBinding.setKeyBinding(KeyBinding.getDefaultKeyBinding());
+		
 		
 		GameMainWindow.setTitle("Cleansanity");
 		GameMainWindow.createWindow();
@@ -22,6 +29,7 @@ public class RunSanity {
 		
 		while (!GameMainWindow.isCloseRequested()){
 			GameMainWindow.updateGraphics();
+			KeyboardHandler.handleKeys();
 		}
 		
 		System.exit(0);
