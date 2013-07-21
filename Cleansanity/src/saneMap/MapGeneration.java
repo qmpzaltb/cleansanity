@@ -34,6 +34,8 @@ public class MapGeneration {
 			}
 		}
 
+		theMap.getTile(0, 0).setTileType(TileType.ENTRANCE);
+		
 	}
 
 	private static void makePath(MapArea theMap, int x1, int y1, int x2, int y2){

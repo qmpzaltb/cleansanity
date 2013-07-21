@@ -17,6 +17,8 @@ public enum GameAction { //GameAction because Action is used extensively in Java
 	ZOOM_IN(new ActionKeyStateHold()),
 	ZOOM_OUT(new ActionKeyStateHold()),
 	
+	ROTATE_TEMP1(new ActionKeyStateHold()),
+	ROTATE_TEMP2(new ActionKeyStateHold()),
 	
 	;
 	

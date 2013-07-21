@@ -128,7 +128,7 @@ public class GameMainWindow {
 		//GL11.glRotatef(32.0f, (float) (currentXRes / 2.0f), 0.0f, 0.0f);
 		//GL11.glRotatef(16.0f, 0 ,(float) (currentYRes / 2.0f), 0.0f);
 
-
+		GL11.glEnable(GL11.GL_DEPTH_TEST);
 	}
 
 	public static void setTitle(String title){
@@ -150,7 +150,7 @@ public class GameMainWindow {
 			//DRAW GAME THINGS
 
 			//Draw the map
-			GL11.glBegin(GL11.GL_QUADS);
+			
 			for (int x = 0; x < theMap.getXSize(); x ++){
 				for (int y = 0; y < theMap.getYSize(); y ++){
 
@@ -162,43 +162,51 @@ public class GameMainWindow {
 					int z2 = z1 + tileHeight;
 
 					if (setGLColour(theMap.getTile(x, y).getFloorColour())){
-						
+						GL11.glBegin(GL11.GL_QUADS);
 						GL11.glVertex3f(x1, y1, z1);
 						GL11.glVertex3f(x1, y2, z1);
 						GL11.glVertex3f(x2, y2, z1);
 						GL11.glVertex3f(x2, y1, z1);
-						
+						GL11.glEnd();
 					}
 
 					if (setGLColour(theMap.getTile(x, y).getWallColour())){
-						
+						GL11.glBegin(GL11.GL_QUADS);
 						GL11.glVertex3f(x1, y1, z1);
 						GL11.glVertex3f(x1, y2, z1);
 						GL11.glVertex3f(x1, y2, z2);
 						GL11.glVertex3f(x1, y1, z2);
-						
+						GL11.glEnd();
 
+						GL11.glBegin(GL11.GL_QUADS);
 						GL11.glVertex3f(x2, y1, z1);
 						GL11.glVertex3f(x2, y2, z1);
 						GL11.glVertex3f(x2, y2, z2);
 						GL11.glVertex3f(x2, y1, z2);
+						GL11.glEnd();
 						
+						GL11.glBegin(GL11.GL_QUADS);
 						GL11.glVertex3f(x1, y1, z1);
 						GL11.glVertex3f(x2, y1, z1);
 						GL11.glVertex3f(x2, y1, z2);
 						GL11.glVertex3f(x1, y1, z2);
+						GL11.glEnd();
 
+						GL11.glBegin(GL11.GL_QUADS);
 						GL11.glVertex3f(x1, y2, z1);
 						GL11.glVertex3f(x2, y2, z1);
 						GL11.glVertex3f(x2, y2, z2);
 						GL11.glVertex3f(x1, y2, z2);
+						GL11.glEnd();
 					}
 					
 					if (setGLColour(theMap.getTile(x, y).getCeilingColour())){
+						GL11.glBegin(GL11.GL_QUADS);
 						GL11.glVertex3f(x1, y1, z2);
 						GL11.glVertex3f(x1, y2, z2);
 						GL11.glVertex3f(x2, y2, z2);
 						GL11.glVertex3f(x2, y1, z2);
+						GL11.glEnd();
 					}
 
 
@@ -246,7 +254,7 @@ public class GameMainWindow {
 		//Temporary input interfacing (WHICH SHOULD BY NO MEANS BE IN THIS CLASS) for testing purposes
 		//This is so I can orient myself in this cruel, cruel world.
 		
-		float tempVarMoveSpeed = 2.0f;
+		float tempVarMoveSpeed = 5.0f;
 		
 		if (GameAction.MOVE_UP.getState()){
 			GL11.glTranslatef(0.0f, -tempVarMoveSpeed, 0.0f);
@@ -267,6 +275,13 @@ public class GameMainWindow {
 		}
 		if (GameAction.ZOOM_OUT.getState()){
 			GL11.glTranslatef(0.0f, 0.0f, -tempVarMoveSpeed);
+		}
+		
+		if (GameAction.ROTATE_TEMP1.getState()){
+			GL11.glRotatef(1.0f, 1.0f, 0.0f, 0.0f);
+		}
+		if (GameAction.ROTATE_TEMP2.getState()){
+			GL11.glRotatef(1.0f, -1.0f, 0.0f, 0.0f);
 		}
 		
 		Display.update();
