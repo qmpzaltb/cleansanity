@@ -33,8 +33,6 @@ public class MapGeneration {
 				makePath(theMap, xCoords[i], yCoords[i], xCoords[j], yCoords[j]);
 			}
 		}
-
-		theMap.getTile(0, 0).setTileType(TileType.ENTRANCE);
 		
 	}
 
@@ -47,7 +45,6 @@ public class MapGeneration {
 
 		int verticalShift = 1;
 		int horizontalShift = 1;
-
 		int currentX = x1;
 		int currentY = y1;
 

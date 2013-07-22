@@ -205,6 +205,7 @@ public class GameMainWindow {
 						GL11.glVertex3f(x1, y1, z2);
 						GL11.glVertex3f(x1, y2, z2);
 						GL11.glVertex3f(x2, y2, z2);
+						setGLColour(Colour.VOID);
 						GL11.glVertex3f(x2, y1, z2);
 						GL11.glEnd();
 					}
@@ -212,8 +213,6 @@ public class GameMainWindow {
 
 				}
 			}
-			
-			GL11.glEnd();
 
 
 
@@ -235,7 +234,6 @@ public class GameMainWindow {
 		//TEXT DRAWING INITIALIZATION
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-
 		//TEXT DRAWING BODY
 		interfaceFontSLICK.drawString(100, 100, "What what what what what what");
 		interfaceFontSLICK2.drawString(100, 150, "? ! ? ! ? ! ? ! ? ! ? ! ? ! ?");

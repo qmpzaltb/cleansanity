@@ -18,8 +18,8 @@ public class KeyBinding {
 		keyBinding[Keyboard.KEY_PERIOD] = GameAction.ZOOM_IN.getActionKeyState();
 		keyBinding[Keyboard.KEY_COMMA] = GameAction.ZOOM_OUT.getActionKeyState();
 		
-		keyBinding[Keyboard.KEY_R] = GameAction.ROTATE_TEMP1.getActionKeyState();
-		keyBinding[Keyboard.KEY_F] = GameAction.ROTATE_TEMP2.getActionKeyState();
+		keyBinding[Keyboard.KEY_UP] = GameAction.ROTATE_TEMP1.getActionKeyState();
+		keyBinding[Keyboard.KEY_DOWN] = GameAction.ROTATE_TEMP2.getActionKeyState();
 		return keyBinding;
 		
 	}
