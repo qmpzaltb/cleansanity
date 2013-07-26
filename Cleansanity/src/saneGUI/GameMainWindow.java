@@ -54,8 +54,8 @@ public class GameMainWindow {
 	private static int currentXRes = xResolutionDefault;
 	private static int currentYRes = yResolutionDefault;
 
-	public static int tileSize = 20;
-	public static int tileHeight = 20;
+	public static int tileSize = 100;
+	public static int tileHeight = 100;
 
 	public static void createWindow(){
 
@@ -137,15 +137,24 @@ public class GameMainWindow {
 
 	public static void updateGraphics(){
 
+		
+		
 		// DEBUG statement
 		drawingGame = true;
 		
+		
+		float xyRatio = (float)(currentXRes) / (float)(currentYRes);
+		//GL11.glFrustum( xyRatio * -1, xyRatio, -1.0, 1.0, 1.5, 10000);
 		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT); 
 
 
+		
+		
 		Cleansanity theSanity = Cleansanity.getSanity();
 		MapArea theMap = theSanity.getCurrentMap();
 
+		GL11.glMatrixMode(GL11.GL_PROJECTION);
+		
 		if (drawingGame){
 			//DRAW GAME THINGS
 
@@ -203,9 +212,11 @@ public class GameMainWindow {
 					if (setGLColour(theMap.getTile(x, y).getCeilingColour())){
 						GL11.glBegin(GL11.GL_QUADS);
 						GL11.glVertex3f(x1, y1, z2);
+						//setGLColour(Colour.EXIT);
 						GL11.glVertex3f(x1, y2, z2);
+						//setGLColour(Colour.ENTRANCE);
 						GL11.glVertex3f(x2, y2, z2);
-						setGLColour(Colour.VOID);
+						//setGLColour(Colour.VOID);
 						GL11.glVertex3f(x2, y1, z2);
 						GL11.glEnd();
 					}
@@ -232,6 +243,7 @@ public class GameMainWindow {
 		}
 
 		//TEXT DRAWING INITIALIZATION
+		GL11.glMatrixMode(GL11.GL_MODELVIEW);
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		//TEXT DRAWING BODY
