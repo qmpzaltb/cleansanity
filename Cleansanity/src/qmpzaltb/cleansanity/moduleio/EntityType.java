@@ -1,5 +1,5 @@
 package qmpzaltb.cleansanity.moduleio;
 
-public class EntityBlueprint {
+public class EntityType {
 
 }
