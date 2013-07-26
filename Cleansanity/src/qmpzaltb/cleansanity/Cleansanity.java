@@ -13,6 +13,8 @@ import qmpzaltb.cleansanity.map.*;
 public class Cleansanity {
 	
 	private static Cleansanity theSanity; //This is what keeps us sane.
+	private long currentGameTime;
+	
 	
 //	GrandMap theGrandMap;
 	MapArea theCurrentMap;
@@ -59,6 +61,10 @@ public class Cleansanity {
 	
 	public static Cleansanity getSanity(){
 		return theSanity;
+	}
+	
+	public long getTime(){
+		return currentGameTime;
 	}
 	
 	
