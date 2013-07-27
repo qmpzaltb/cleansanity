@@ -11,7 +11,6 @@ abstract public class Modular {
 	public Modular(){
 		creationTime = Cleansanity.getSanity().getTime();
 	}
-
 	
 	
 }

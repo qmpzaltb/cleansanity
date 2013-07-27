@@ -124,7 +124,7 @@ public class GameMainWindow {
 		//GL11.glMatrixMode(GL11.GL_MODELVIEW);
 
 		//Resizability shall be in the form of options!
-		Display.setResizable(false);
+		Display.setResizable(true);
 		//GL11.glRotatef(32.0f, (float) (currentXRes / 2.0f), 0.0f, 0.0f);
 		//GL11.glRotatef(16.0f, 0 ,(float) (currentYRes / 2.0f), 0.0f);
 
@@ -137,7 +137,11 @@ public class GameMainWindow {
 
 	public static void updateGraphics(){
 
-		
+		if (currentXRes != Display.getWidth() || currentYRes != Display.getHeight()){
+			currentXRes = Display.getWidth();
+			currentYRes = Display.getHeight();
+			initGLArea();
+		}
 		
 		// DEBUG statement
 		drawingGame = true;

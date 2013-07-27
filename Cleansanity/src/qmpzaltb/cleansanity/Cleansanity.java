@@ -3,7 +3,9 @@ package qmpzaltb.cleansanity;
 import java.util.Random;
 import java.util.Vector;
 
-import qmpzaltb.cleansanity.entity.*;
+import qmpzaltb.cleansanity.logic.Effect;
+import qmpzaltb.cleansanity.logic.Entity;
+import qmpzaltb.cleansanity.logic.Skeleton;
 import qmpzaltb.cleansanity.map.*;
 
 /**
@@ -19,7 +21,10 @@ public class Cleansanity {
 //	GrandMap theGrandMap;
 	MapArea theCurrentMap;
 	
-	Vector<Entity> theEntities;
+	//You might be asking, why all this in multiple arrays? Updating purposes! Updatetime, updatetime, updatetime!
+	Vector<Entity> entities;
+	Vector<Effect> effects;
+	Vector<Skeleton> skeletons;
 	
 	Entity thePlayerEntity; //A duplicate of the one in theEntities vector! Woo! This is so we know who we are controlling.
 	
