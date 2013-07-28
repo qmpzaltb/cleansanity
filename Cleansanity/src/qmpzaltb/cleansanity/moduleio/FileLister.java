@@ -24,7 +24,7 @@ public class FileLister {
 		//Placing files that are (a) files and (b) .txt files into an array of acceptable files
 		for (int i = 0; i < allFiles.length; i ++){
 			if (allFiles[i].isFile()){
-				if (allFiles[i].getName().endsWith(".txt")){
+				if (allFiles[i].getName().endsWith(".js")){
 					acceptableFiles[ai] = allFiles[i];
 					ai ++;
 				}
@@ -58,6 +58,7 @@ enum FileType{
 	SKELETON_FILE("skeletons"),
 	METER_FILE("meters"),
 	ACTION_FILE("actions"),
+	ANIMATION_FILE("animations"),
 	;
 	
 	String fileSubdirectory;

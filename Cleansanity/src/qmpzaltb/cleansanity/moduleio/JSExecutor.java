@@ -66,7 +66,7 @@ public class JSExecutor {
 			try {
 				fr = new FileReader(meterFile);
 				meterDefinition = new MeterDefines();
-				binds.put("define_meter" , meterDefinition);
+				binds.put("defineMeter" , meterDefinition);
 				
 				
 				
