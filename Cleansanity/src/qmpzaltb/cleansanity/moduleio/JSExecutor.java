@@ -56,17 +56,21 @@ public class JSExecutor {
 		
 		File[] meterFiles = FileLister.getFiles(FileType.METER_FILE);
 		
+		Bindings binds = new SimpleBindings();
+		MeterDefines meterDefinition;
+		FileReader fr;
+	
+		
 		for (File meterFile : meterFiles){
-			FileReader fr;
+
 			try {
 				fr = new FileReader(meterFile);
+				meterDefinition = new MeterDefines();
+				binds.put("define_meter" , meterDefinition);
 				
-				Bindings binds = new SimpleBindings();
-				binds.put("define" , JSCommands.class);
-			
-		
-			
-			
+				
+				
+				
 				fr.close();
 			} catch (FileNotFoundException e) {
 				System.out.println("This shouldn't be happening because the file already exists.");

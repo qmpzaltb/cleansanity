@@ -12,6 +12,7 @@ import qmpzaltb.cleansanity.moduleio.ActionType;
 import qmpzaltb.cleansanity.moduleio.AnimationType;
 import qmpzaltb.cleansanity.moduleio.EffectType;
 import qmpzaltb.cleansanity.moduleio.EntityType;
+import qmpzaltb.cleansanity.moduleio.MeterType;
 import qmpzaltb.cleansanity.moduleio.SkeletonType;
 
 /**
@@ -33,6 +34,7 @@ public class Cleansanity {
 	Vector<EntityType> entityTypes;
 	Vector<SkeletonType> skeletonTypes;
 	Vector<AnimationType> animationTypes;
+	Vector<MeterType> meterTypes;
 	
 	//You might be asking, why all this in multiple arrays? For fun.
 	Vector<Entity> entities;
