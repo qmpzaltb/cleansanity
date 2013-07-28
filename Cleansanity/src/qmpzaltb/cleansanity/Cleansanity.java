@@ -6,7 +6,13 @@ import java.util.Vector;
 import qmpzaltb.cleansanity.logic.Effect;
 import qmpzaltb.cleansanity.logic.Entity;
 import qmpzaltb.cleansanity.logic.Skeleton;
-import qmpzaltb.cleansanity.map.*;
+import qmpzaltb.cleansanity.map.MapArea;
+import qmpzaltb.cleansanity.map.MapGeneration;
+import qmpzaltb.cleansanity.moduleio.ActionType;
+import qmpzaltb.cleansanity.moduleio.AnimationType;
+import qmpzaltb.cleansanity.moduleio.EffectType;
+import qmpzaltb.cleansanity.moduleio.EntityType;
+import qmpzaltb.cleansanity.moduleio.SkeletonType;
 
 /**
  * Main class that holds all of the game's "things".
@@ -21,7 +27,14 @@ public class Cleansanity {
 //	GrandMap theGrandMap;
 	MapArea theCurrentMap;
 	
-	//You might be asking, why all this in multiple arrays? Updating purposes! Updatetime, updatetime, updatetime!
+	//All the "types" of things. Like, player characters are types, and sprinting is a type.
+	Vector<ActionType> actionTypes;
+	Vector<EffectType> effectTypes;
+	Vector<EntityType> entityTypes;
+	Vector<SkeletonType> skeletonTypes;
+	Vector<AnimationType> animationTypes;
+	
+	//You might be asking, why all this in multiple arrays? For fun.
 	Vector<Entity> entities;
 	Vector<Effect> effects;
 	Vector<Skeleton> skeletons;
@@ -37,6 +50,7 @@ public class Cleansanity {
 	public Cleansanity(){
 		
 		
+		
 		//theGrandMap equals something. Make a grand map
 		//theGrandMap = new GrandMap();
 		
@@ -48,15 +62,6 @@ public class Cleansanity {
 		//thePlayerEntity is something. Something something the somethings.
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	public MapArea getCurrentMap(){

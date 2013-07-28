@@ -26,7 +26,7 @@ public class RunSanity {
 		GameMainWindow.createWindow();
 
 		
-		
+		//The game loop! Loops the game processes so that they can happen again, and again, and again.
 		while (!GameMainWindow.isCloseRequested()){
 			GameMainWindow.updateGraphics();
 			KeyboardHandler.handleKeys();
