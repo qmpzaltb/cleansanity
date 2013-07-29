@@ -32,6 +32,7 @@ public class JSExecutor {
 	
 	private Vector<String> meterNames;
 	private ScriptEngine jsEngine;
+	private Bindings binds;
 	
 	public JSExecutor(String theModuleDirectory){
 		
@@ -46,17 +47,13 @@ public class JSExecutor {
 	public void loadModule(){
 		
 		
-		loadMeters();
-		
-		
-		
 	}
 	
-	private void loadMeters(){
+	private void compileFiles(){
 		
-		File[] meterFiles = FileLister.getFiles(FileType.METER_FILE);
+		File[] meterFiles = FileLister.getFiles();
 		
-		Bindings binds = new SimpleBindings();
+		binds = new SimpleBindings();
 		MeterDefines meterDefinition;
 		FileReader fr;
 	
