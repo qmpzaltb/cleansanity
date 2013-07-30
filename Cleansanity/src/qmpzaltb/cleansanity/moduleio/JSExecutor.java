@@ -29,30 +29,27 @@ import javax.script.SimpleBindings;
 public class JSExecutor {
 
 	
-	private static String moduleDirectory;
+	private String moduleDirectory;
+	private FileLister lister;
 	
-	private static Vector<String> meterNames;
-	private static ScriptEngine jsEngine;
-	private static Bindings binds;
+	private Vector<String> meterNames;
+	private ScriptEngine jsEngine;
+	private Bindings binds;
 	
-	public static void initializeJSEngine(String theModuleDirectory){
+	public JSExecutor(String theModuleDirectory){
 		
 		moduleDirectory = theModuleDirectory;
-		FileLister.setModuleDirectory(moduleDirectory);
+		lister = new FileLister(moduleDirectory);
 		
 		jsEngine = new ScriptEngineManager().getEngineByName("javascript");
 		
-	}
-	
-	
-	public static void loadModule(){
-		
+		loadModule();
 		
 	}
 	
-	private static void readFiles(){
+	private void loadModule(){
 		
-		File[] meterFiles = FileLister.getFiles();
+		File[] meterFiles = lister.getFiles();
 		
 		binds = new SimpleBindings();
 		FileReader fr;
@@ -81,7 +78,7 @@ public class JSExecutor {
 		
 	}
 	
-	public static void evaluate(String script){
+	public void evaluate(String script){
 		try {
 			jsEngine.eval(script , binds);
 		} catch (ScriptException e) {

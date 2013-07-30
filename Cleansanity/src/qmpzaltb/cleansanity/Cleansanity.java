@@ -11,6 +11,8 @@ import qmpzaltb.cleansanity.map.MapGeneration;
 import qmpzaltb.cleansanity.moduleio.ActionType;
 import qmpzaltb.cleansanity.moduleio.AnimationType;
 import qmpzaltb.cleansanity.moduleio.EffectType;
+import qmpzaltb.cleansanity.moduleio.FileLister;
+import qmpzaltb.cleansanity.moduleio.JSExecutor;
 import qmpzaltb.cleansanity.moduleio.SkeletonType;
 
 /**
@@ -22,6 +24,7 @@ public class Cleansanity {
 	private static Cleansanity theSanity; //This is what keeps us sane.
 	private long currentGameTime;
 	
+	JSExecutor jsExecutor;
 	
 //	GrandMap theGrandMap;
 	MapArea theCurrentMap;
@@ -40,19 +43,23 @@ public class Cleansanity {
 	
 	Entity thePlayerEntity; //A duplicate of the one in theEntities vector! Woo! This is so we know who we are controlling.
 	
-	public static void initializeSanity(){
+	public static void initializeSanity(String modulePath){
 		
-		theSanity = new Cleansanity();
+		theSanity = new Cleansanity(modulePath);
 		
 	}
 	
-	public Cleansanity(){
+	public Cleansanity(String modulePath){
+		
+		jsExecutor = new JSExecutor(modulePath);
 		
 		actionTypes = new Vector<ActionType>();
 		effectTypes = new Vector<EffectType>();
 		entityTypes = new Vector<String>();
 		skeletonTypes = new Vector<SkeletonType>();
 		animationTypes = new Vector<AnimationType>();
+		
+		
 		
 		
 		//theGrandMap equals something. Make a grand map

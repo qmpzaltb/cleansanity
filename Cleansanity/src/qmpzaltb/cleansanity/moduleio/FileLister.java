@@ -5,18 +5,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
-
+/**
+ * FileLister contains methods pertaining to getting all the .js files in a module directory.
+ */
 public class FileLister {
 
-	private static String currentModuleDirectory = "module" + File.pathSeparator +"cleansanity";
+	private String currentModuleDirectory = "module" + File.separator +"cleansanity";
 	
-	public static void setModuleDirectory(String moduleDirectory){
+	public FileLister(String moduleDirectory){
 		currentModuleDirectory = moduleDirectory;
 	}
 	
-	public static File[] getFiles(){
+	public File[] getFiles(){
 		
-		File theDirectory = new File(currentModuleDirectory + File.pathSeparator + "javascript");
+		File theDirectory = new File(currentModuleDirectory + File.separator + "javascript");
 		
 		
 		ArrayList<File> allFiles = getAllFilesInDirectory(theDirectory);
@@ -34,11 +36,13 @@ public class FileLister {
 		
 	}
 	
-	public static ArrayList<File> getAllFilesInDirectory(File directory){
+	private ArrayList<File> getAllFilesInDirectory(File directory){
 		
 		ArrayList<File> filesInDirectory =  new ArrayList<File>();
 		
 		File[] files = directory.listFiles();
+		
+		System.out.println(directory.getPath());
 		
 		for (int i = 0; i < files.length; i ++){
 			

@@ -1,18 +1,15 @@
 package qmpzaltb.cleansanity.logic;
 
-import qmpzaltb.cleansanity.moduleio.MeterType;
-
 public class Meter{
 	
-	private MeterType typeOfMeter;
+	public static final MAX_VALUE
 	
 	private float meterMinimum;
 	private float meterMaximum;
 	
 	private float currentMeterLevel;
 	
-	public Meter(MeterType meterType){
-		typeOfMeter = meterType;
+	public Meter(){
 		
 		meterMinimum = typeOfMeter.getStandardMinimum();
 		meterMaximum = typeOfMeter.getStandardMaximum();
@@ -30,7 +27,7 @@ public class Meter{
 		setCurrentLevel(currentMeterLevel + change);
 	}
 	public void setMaximum(float level){
-		meterMaximum = Math.max(Math.min(level, typeOfMeter.getAbsoluteMaximum()) , typeOfMeter.getAbsoluteMinimum());
+		meterMaximum = Math.max(Math.min(level, Float.MAX_VALUE / 2) , typeOfMeter.getAbsoluteMinimum());
 	}
 	public void shiftMaximum(float change){
 		setMaximum(meterMaximum + change);

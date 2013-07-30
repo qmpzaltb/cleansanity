@@ -4,6 +4,7 @@ import qmpzaltb.cleansanity.graphics.GameMainWindow;
 import qmpzaltb.cleansanity.input.KeyBinding;
 import qmpzaltb.cleansanity.input.KeyboardHandler;
 
+import java.io.File;
 import java.util.Scanner;
 
 import org.lwjgl.input.Keyboard;
@@ -15,10 +16,18 @@ import org.lwjgl.input.Keyboard;
  */
 public class RunSanity {
 
+	static String[] arguments;
+	static String modulePath;
+	
+	
 	public static void main(String[] args){
 		
+		arguments = new String[]{"-module:cleansanity"};
 		
-		Cleansanity.initializeSanity();
+		handleArguments();
+		
+		
+		Cleansanity.initializeSanity(modulePath);
 		KeyBinding.setKeyBinding(KeyBinding.getDefaultKeyBinding());
 		
 		
@@ -33,6 +42,19 @@ public class RunSanity {
 		}
 		
 		System.exit(0);
+		
+	}
+	
+	public static void handleArguments(){
+		
+		for (String argument : arguments){
+			if (argument.startsWith("-module:")){
+				modulePath = "module" + File.separator + argument.replaceFirst("-module:" , "");
+			}
+			
+			
+			
+		}
 		
 	}
 	
