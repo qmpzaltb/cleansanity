@@ -26,8 +26,7 @@ public class RunSanity {
 		
 		handleArguments();
 		
-		
-		Cleansanity.initializeSanity(modulePath);
+		Cleansanity.setSanity(modulePath);
 		KeyBinding.setKeyBinding(KeyBinding.getDefaultKeyBinding());
 		
 		

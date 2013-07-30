@@ -8,6 +8,8 @@ import java.io.PrintStream;
 import java.util.Vector;
 
 import javax.script.Bindings;
+import javax.script.Compilable;
+import javax.script.CompiledScript;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
@@ -32,6 +34,9 @@ public class JSExecutor {
 	private String moduleDirectory;
 	private FileLister lister;
 	
+	private JSSanityHandler sanityHandler;
+	private JSEntityHandler entityHandlerTHIS;
+	
 	private Vector<String> meterNames;
 	private ScriptEngine jsEngine;
 	private Bindings binds;
@@ -43,11 +48,9 @@ public class JSExecutor {
 		
 		jsEngine = new ScriptEngineManager().getEngineByName("javascript");
 		
-		loadModule();
-		
 	}
 	
-	private void loadModule(){
+	public void loadModule(){
 		
 		long loadStart = System.currentTimeMillis();
 		
@@ -58,17 +61,29 @@ public class JSExecutor {
 		binds = new SimpleBindings();
 		FileReader fr;
 		
-		binds.put("sanity" , JSSanityHandler.class);
+		
+		sanityHandler = new JSSanityHandler();
+		binds.put("sanity" , sanityHandler);
 		
 		for (File jsFile : jsFiles){
 
 			try {
 				fr = new FileReader(jsFile);
+				System.out.println("Current file: " + jsFile.getName());
 				
-				
-				
-				
-				jsEngine.eval(fr , binds);
+//				if (jsEngine instanceof Compilable)
+//				{
+//					System.out.println("Compiling....");
+//					Compilable compEngine = (Compilable)jsEngine;
+//					CompiledScript cs = compEngine.compile(fr);
+//					cs.eval(binds);
+//					System.out.println(cs.getEngine() == jsEngine);
+//					
+//				}
+//				else {
+					jsEngine.eval(fr, binds);
+//				}
+				//jsEngine.eval(fr , binds);
 				fr.close();
 			} catch (FileNotFoundException e) {
 				System.out.println("This shouldn't be happening because the file already exists.");

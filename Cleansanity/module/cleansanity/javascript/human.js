@@ -23,7 +23,6 @@ human.on_create = function(){
 	//(because that's what the method says that number does)
 	define_health(100);
 	define_stamina(50);
-	
 
 	//Sets the entity's speed in blocks per gametick.
 	THIS.set_speed(0.1);

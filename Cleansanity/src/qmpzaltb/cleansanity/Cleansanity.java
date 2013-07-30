@@ -43,15 +43,20 @@ public class Cleansanity {
 	
 	Entity thePlayerEntity; //A duplicate of the one in theEntities vector! Woo! This is so we know who we are controlling.
 	
-	public static void initializeSanity(String modulePath){
+	public static void setSanity(String modulePath){
 		
-		theSanity = new Cleansanity(modulePath);
+		theSanity = new Cleansanity();
+		theSanity.initializeSanity(modulePath);
 		
 	}
 	
-	public Cleansanity(String modulePath){
+	public Cleansanity(){
 		
-		jsExecutor = new JSExecutor(modulePath);
+	}
+	
+	public void initializeSanity(String modulePath){
+		
+
 		
 		actionTypes = new Vector<ActionType>();
 		effectTypes = new Vector<EffectType>();
@@ -60,7 +65,8 @@ public class Cleansanity {
 		animationTypes = new Vector<AnimationType>();
 		
 		
-		
+		jsExecutor = new JSExecutor(modulePath);
+		jsExecutor.loadModule();
 		
 		//theGrandMap equals something. Make a grand map
 		//theGrandMap = new GrandMap();
@@ -89,7 +95,11 @@ public class Cleansanity {
 	}
 	
 	public void addEntityType(String name){
-		entityTypes.add(name);
+		//TODO uncomment this line: entityTypes.add(name);
+	}
+	
+	public JSExecutor getJSExecutor(){
+		return jsExecutor;
 	}
 	
 	

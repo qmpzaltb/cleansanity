@@ -39,7 +39,7 @@ function define_health(maxHealth){
 	THIS.set_meter_visible_playerscreen(true);
 	
 	//Sets if the meter is visible above the entity
-	THIS.set_meter_visible_public(true)
+	THIS.set_meter_visible_public(true);
 }
 
 //Much like the Health function, but for stamina. The most notable differences are the name, colour, and public visibility.
