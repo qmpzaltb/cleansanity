@@ -20,15 +20,17 @@ public class FileLister {
 		
 		
 		ArrayList<File> allFiles = getAllFilesInDirectory(theDirectory);
+		ArrayList<File> appropriateFiles = new ArrayList<File>();
 		
-		File[] theFiles = new File[allFiles.size()];
-		
-		for (int i = 0; i < allFiles.size(); i++){
-			theFiles[i] = allFiles.get(i);
+		for (int i = 0; i < allFiles.size(); i ++){
+			if (allFiles.get(i).getName().endsWith(".js")){
+				appropriateFiles.add(allFiles.get(i));
+			}
 		}
-		
+				
+		File[] theFiles = appropriateFiles.toArray(new File[appropriateFiles.size()]);
+
 		return theFiles;
-		
 		
 	}
 	

@@ -10,6 +10,7 @@ import java.util.Vector;
 import javax.script.Bindings;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import javax.script.SimpleBindings;
 
 /*
@@ -28,13 +29,13 @@ import javax.script.SimpleBindings;
 public class JSExecutor {
 
 	
-	private String moduleDirectory;
+	private static String moduleDirectory;
 	
-	private Vector<String> meterNames;
-	private ScriptEngine jsEngine;
-	private Bindings binds;
+	private static Vector<String> meterNames;
+	private static ScriptEngine jsEngine;
+	private static Bindings binds;
 	
-	public JSExecutor(String theModuleDirectory){
+	public static void initializeJSEngine(String theModuleDirectory){
 		
 		moduleDirectory = theModuleDirectory;
 		FileLister.setModuleDirectory(moduleDirectory);
@@ -44,17 +45,16 @@ public class JSExecutor {
 	}
 	
 	
-	public void loadModule(){
+	public static void loadModule(){
 		
 		
 	}
 	
-	private void compileFiles(){
+	private static void readFiles(){
 		
 		File[] meterFiles = FileLister.getFiles();
 		
 		binds = new SimpleBindings();
-		MeterDefines meterDefinition;
 		FileReader fr;
 	
 		
@@ -62,8 +62,7 @@ public class JSExecutor {
 
 			try {
 				fr = new FileReader(meterFile);
-				meterDefinition = new MeterDefines();
-				binds.put("defineMeter" , meterDefinition);
+				binds.put("sanity" , JSSanityHandler.class);
 				
 				
 				
@@ -80,6 +79,14 @@ public class JSExecutor {
 		}
 		
 		
+	}
+	
+	public static void evaluate(String script){
+		try {
+			jsEngine.eval(script , binds);
+		} catch (ScriptException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	

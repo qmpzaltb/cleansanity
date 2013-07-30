@@ -11,8 +11,6 @@ import qmpzaltb.cleansanity.map.MapGeneration;
 import qmpzaltb.cleansanity.moduleio.ActionType;
 import qmpzaltb.cleansanity.moduleio.AnimationType;
 import qmpzaltb.cleansanity.moduleio.EffectType;
-import qmpzaltb.cleansanity.moduleio.EntityType;
-import qmpzaltb.cleansanity.moduleio.MeterType;
 import qmpzaltb.cleansanity.moduleio.SkeletonType;
 
 /**
@@ -31,10 +29,9 @@ public class Cleansanity {
 	//All the "types" of things. Like, player characters are types, and sprinting is a type.
 	Vector<ActionType> actionTypes;
 	Vector<EffectType> effectTypes;
-	Vector<EntityType> entityTypes;
+	Vector<String> entityTypes;
 	Vector<SkeletonType> skeletonTypes;
 	Vector<AnimationType> animationTypes;
-	Vector<MeterType> meterTypes;
 	
 	//You might be asking, why all this in multiple arrays? For fun.
 	Vector<Entity> entities;
@@ -51,6 +48,11 @@ public class Cleansanity {
 	
 	public Cleansanity(){
 		
+		actionTypes = new Vector<ActionType>();
+		effectTypes = new Vector<EffectType>();
+		entityTypes = new Vector<String>();
+		skeletonTypes = new Vector<SkeletonType>();
+		animationTypes = new Vector<AnimationType>();
 		
 		
 		//theGrandMap equals something. Make a grand map
@@ -77,6 +79,10 @@ public class Cleansanity {
 	
 	public long getTime(){
 		return currentGameTime;
+	}
+	
+	public void addEntityType(String name){
+		entityTypes.add(name);
 	}
 	
 	
