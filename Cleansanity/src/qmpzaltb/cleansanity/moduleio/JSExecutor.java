@@ -49,21 +49,26 @@ public class JSExecutor {
 	
 	private void loadModule(){
 		
-		File[] meterFiles = lister.getFiles();
+		long loadStart = System.currentTimeMillis();
+		
+		File[] jsFiles = lister.getFiles();
+		
+		System.out.println(jsFiles.length);
 		
 		binds = new SimpleBindings();
 		FileReader fr;
-	
 		
-		for (File meterFile : meterFiles){
+		binds.put("sanity" , JSSanityHandler.class);
+		
+		for (File jsFile : jsFiles){
 
 			try {
-				fr = new FileReader(meterFile);
-				binds.put("sanity" , JSSanityHandler.class);
+				fr = new FileReader(jsFile);
 				
 				
 				
 				
+				jsEngine.eval(fr , binds);
 				fr.close();
 			} catch (FileNotFoundException e) {
 				System.out.println("This shouldn't be happening because the file already exists.");
@@ -71,9 +76,15 @@ public class JSExecutor {
 			} catch (IOException e) {
 				System.out.println("Is the file unreadable or something? File priveleges should be checked, or something of the sort.");
 				e.printStackTrace();
+			} catch (ScriptException e) {
+				System.out.println("This is bound to happen. Method doesn't exist, something like that. Just carry on.");
+				e.printStackTrace();
 			}
 			
 		}
+		
+		
+		System.out.println("JS Loading time: " + (System.currentTimeMillis() - loadStart) + " ms");
 		
 		
 	}
