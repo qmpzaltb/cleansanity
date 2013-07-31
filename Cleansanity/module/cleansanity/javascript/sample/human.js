@@ -27,6 +27,11 @@ human.on_create = function(){
 	//Sets the entity's speed in blocks per gametick.
 	THIS.set_speed(0.1);
 	
+	//Sets the entity's size in blocks. 
+	//Used for collision detection, and pretty much it. 
+	//The size is the radius centered on the entity's center.
+	THIS.set_size(0.5);
+	
 	//Sets the skeleton of the entity to the 
 	THIS.define_skeleton("humanoid_skeleton");
 	

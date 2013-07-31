@@ -25,6 +25,7 @@ public class Entity{
 	private float xPosition;
 	private float yPosition;
 	
+	private float size;
 	private float speed;
 	
 	private boolean removable;
@@ -100,6 +101,14 @@ public class Entity{
 	
 	public void setSkeleton(String skeletonName){
 		//TODO define skeleton
+	}
+	
+	public void setSize(float entitySize){
+		size = entitySize;
+	}
+	
+	public float getSize(){
+		return size;
 	}
 	
 }

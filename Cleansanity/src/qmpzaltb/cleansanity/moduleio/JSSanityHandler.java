@@ -18,4 +18,11 @@ public class JSSanityHandler {
 		jsExecutor.evaluate(entity + " = new Object();");
 	}
 	
+	public void define_skeleton_type(String skeleton){
+		System.out.println("JSSanityHandler: Defining " + skeleton);
+		sanity.addSkeletonType(skeleton);
+		jsExecutor.evaluate(skeleton + " = new Object();");
+		
+	}
+	
 }

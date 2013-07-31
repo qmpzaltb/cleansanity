@@ -26,22 +26,6 @@ public class LimbLine extends Limb{
 	float colB;
 	float colA;
 
-	public double getLimbX1() {
-		return limbX1;
-	}
-
-	public double getLimbY1() {
-		return limbY1;
-	}
-
-	public double getLimbX2() {
-		return limbX2;
-	}
-
-	public double getLimbY2() {
-		return limbY2;
-	}
-
 	public double getAttachX() {
 		return limbX2;
 	}

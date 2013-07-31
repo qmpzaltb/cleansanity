@@ -33,7 +33,7 @@ public class Cleansanity {
 	Vector<ActionType> actionTypes;
 	Vector<EffectType> effectTypes;
 	Vector<String> entityTypes;
-	Vector<SkeletonType> skeletonTypes;
+	Vector<String> skeletonTypes;
 	Vector<AnimationType> animationTypes;
 	
 	//You might be asking, why all this in multiple arrays? For fun.
@@ -61,7 +61,7 @@ public class Cleansanity {
 		actionTypes = new Vector<ActionType>();
 		effectTypes = new Vector<EffectType>();
 		entityTypes = new Vector<String>();
-		skeletonTypes = new Vector<SkeletonType>();
+		skeletonTypes = new Vector<String>();
 		animationTypes = new Vector<AnimationType>();
 		
 		entities = new Vector<Entity>();
@@ -100,7 +100,11 @@ public class Cleansanity {
 	}
 	
 	public void addEntityType(String name){
-		//TODO uncomment this line: entityTypes.add(name);
+		entityTypes.add(name);
+	}
+	
+	public void addSkeletonType(String name){
+		skeletonTypes.add(name);
 	}
 	
 	public JSExecutor getJSExecutor(){
