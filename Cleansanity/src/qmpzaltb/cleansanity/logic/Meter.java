@@ -16,6 +16,12 @@ public class Meter{
 	
 	private float currentMeterLevel;
 	
+	private boolean meterVisibleHUD;
+	private boolean meterVisiblePlayerScreen;
+	private boolean meterVisiblePublic;
+	
+	private int meterDisplayPriority;
+	
 	public Meter(){
 		
 	}
@@ -25,6 +31,9 @@ public class Meter{
 	}
 	public void shiftLevel(float change){
 		setCurrentLevel(currentMeterLevel + change);
+	}
+	public void setName(String name){
+		meterName = name;
 	}
 	public void setMaximum(float level){
 		meterMaximum = Math.max(Math.min(level, MAX_METER_VALUE) , MIN_METER_VALUE);
@@ -42,6 +51,34 @@ public class Meter{
 		red = r;
 		green = g;
 		blue = b;
+	}
+
+	public boolean isMeterVisiblePlayerScreen() {
+		return meterVisiblePlayerScreen;
+	}
+
+	public void setMeterVisiblePlayerScreen(boolean visible) {
+		meterVisiblePlayerScreen = visible;
+	}
+
+	public boolean isMeterVisibleHUD() {
+		return meterVisibleHUD;
+	}
+
+	public void setMeterVisibleHUD(boolean visible) {
+		meterVisibleHUD = visible;
+	}
+
+	public boolean isMeterVisiblePublic() {
+		return meterVisiblePublic;
+	}
+
+	public void setMeterVisiblePublic(boolean visible) {
+		meterVisiblePublic = visible;
+	}
+	
+	public void setMeterDisplayPriority(int priority){
+		meterDisplayPriority = priority;
 	}
 	
 	

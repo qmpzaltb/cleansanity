@@ -13,8 +13,8 @@ public class JSSanityHandler {
 	}
 	
 	public void define_entity_type(String entity){
-		System.out.println("Defining " + entity);
-		//sanity.addEntityType(entity);
+		System.out.println("JSSanityHandler: Defining " + entity);
+		sanity.addEntityType(entity);
 		jsExecutor.evaluate(entity + " = new Object();");
 	}
 	

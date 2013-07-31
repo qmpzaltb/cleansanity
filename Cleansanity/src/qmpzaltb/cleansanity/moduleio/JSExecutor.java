@@ -15,6 +15,8 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import javax.script.SimpleBindings;
 
+import qmpzaltb.cleansanity.logic.Entity;
+
 /*
  * LOAD ORDER (only of critical importance) (this exists because entities have meters; entities can't be declared without them, and so on)
  * Meters
@@ -35,6 +37,7 @@ public class JSExecutor {
 	private FileLister lister;
 	
 	private JSSanityHandler sanityHandler;
+	
 	private JSEntityHandler entityHandlerTHIS;
 	
 	private Vector<String> meterNames;
@@ -47,7 +50,7 @@ public class JSExecutor {
 		lister = new FileLister(moduleDirectory);
 		
 		jsEngine = new ScriptEngineManager().getEngineByName("javascript");
-		
+		entityHandlerTHIS = new JSEntityHandler();
 	}
 	
 	public void loadModule(){
@@ -110,6 +113,21 @@ public class JSExecutor {
 		} catch (ScriptException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void setScopes(Entity scopeTo){
+		entityHandlerTHIS.setScope(scopeTo);
+		
+		
+		binds.put("THIS" , entityHandlerTHIS);
+	}
+	
+	public Entity makeEntity(Entity toCreate, String createType){
+		setScopes(toCreate);
+		toCreate.setEntityTypeName(createType);
+		evaluate(createType + ".on_create();");
+		toCreate.setUpdateString(createType + ".on_update()");
+		return toCreate;
 	}
 	
 	

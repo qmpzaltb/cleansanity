@@ -64,9 +64,14 @@ public class Cleansanity {
 		skeletonTypes = new Vector<SkeletonType>();
 		animationTypes = new Vector<AnimationType>();
 		
+		entities = new Vector<Entity>();
 		
 		jsExecutor = new JSExecutor(modulePath);
 		jsExecutor.loadModule();
+		
+		long makeHumanTime = System.currentTimeMillis();
+		entities.add(jsExecutor.makeEntity(new Entity(10.5f , 10.5f) , "human"));
+		System.out.println(System.currentTimeMillis() - makeHumanTime);
 		
 		//theGrandMap equals something. Make a grand map
 		//theGrandMap = new GrandMap();
