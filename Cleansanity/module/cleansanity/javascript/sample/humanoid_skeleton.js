@@ -8,7 +8,7 @@ humanoid_skeleton.define_animation("walk_legs" , 60);
 humanoid_skeleton.define_animation("idle" , 60);
 
 humanoid_skeleton.on_create = function(){
-	THIS_SKELETON.define_limb_line()
+	THIS.SKELETON.define_limb_line()
 	
 	
 }

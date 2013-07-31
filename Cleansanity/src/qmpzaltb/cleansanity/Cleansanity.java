@@ -13,7 +13,7 @@ import qmpzaltb.cleansanity.moduleio.AnimationType;
 import qmpzaltb.cleansanity.moduleio.EffectType;
 import qmpzaltb.cleansanity.moduleio.FileLister;
 import qmpzaltb.cleansanity.moduleio.JSExecutor;
-import qmpzaltb.cleansanity.moduleio.SkeletonType;
+import qmpzaltb.cleansanity.moduleio.JSSkeletonTypeHandler;
 
 /**
  * Main class that holds all of the game's "things".
@@ -34,7 +34,9 @@ public class Cleansanity {
 	Vector<EffectType> effectTypes;
 	Vector<String> entityTypes;
 	Vector<String> skeletonTypes;
+	Vector<JSSkeletonTypeHandler> skeletonTypeHandlers;
 	Vector<AnimationType> animationTypes;
+	
 	
 	//You might be asking, why all this in multiple arrays? For fun.
 	Vector<Entity> entities;
@@ -62,6 +64,7 @@ public class Cleansanity {
 		effectTypes = new Vector<EffectType>();
 		entityTypes = new Vector<String>();
 		skeletonTypes = new Vector<String>();
+		skeletonTypeHandlers = new Vector<JSSkeletonTypeHandler>();
 		animationTypes = new Vector<AnimationType>();
 		
 		entities = new Vector<Entity>();
@@ -71,6 +74,7 @@ public class Cleansanity {
 		
 		long makeHumanTime = System.currentTimeMillis();
 		entities.add(jsExecutor.makeEntity(new Entity(10.5f , 10.5f) , "human"));
+		entities.add(jsExecutor.makeEntity(new Entity(12.5f , 12.5f) , "human"));
 		System.out.println(System.currentTimeMillis() - makeHumanTime);
 		
 		//theGrandMap equals something. Make a grand map
@@ -103,8 +107,9 @@ public class Cleansanity {
 		entityTypes.add(name);
 	}
 	
-	public void addSkeletonType(String name){
+	public void addSkeletonType(String name , JSSkeletonTypeHandler handler){
 		skeletonTypes.add(name);
+		skeletonTypeHandlers.add(handler);
 	}
 	
 	public JSExecutor getJSExecutor(){

@@ -8,6 +8,8 @@ public class JSEntityHandler {
 	private Entity entityScope;
 	private Meter meterScope;
 
+	public JSSkeletonHandler SKELETON;
+	
 	public JSEntityHandler(){
 
 	}
@@ -103,6 +105,7 @@ public class JSEntityHandler {
 	
 	public void define_skeleton(String skeletonName){
 		entityScope.setSkeleton(skeletonName);
+		SKELETON = new JSSkeletonHandler();
 	}
 	
 

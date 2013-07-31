@@ -130,6 +130,10 @@ public class JSExecutor {
 		return toCreate;
 	}
 	
+	public void makeBind(String bindString, Object bindObject){
+		binds.put(bindString , bindObject);
+	}
+	
 	
 	
 	
