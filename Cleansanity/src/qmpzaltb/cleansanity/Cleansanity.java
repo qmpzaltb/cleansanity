@@ -13,7 +13,6 @@ import qmpzaltb.cleansanity.moduleio.AnimationType;
 import qmpzaltb.cleansanity.moduleio.EffectType;
 import qmpzaltb.cleansanity.moduleio.FileLister;
 import qmpzaltb.cleansanity.moduleio.JSExecutor;
-import qmpzaltb.cleansanity.moduleio.JSSkeletonTypeHandler;
 
 /**
  * Main class that holds all of the game's "things".
@@ -34,7 +33,6 @@ public class Cleansanity {
 	Vector<EffectType> effectTypes;
 	Vector<String> entityTypes;
 	Vector<String> skeletonTypes;
-	Vector<JSSkeletonTypeHandler> skeletonTypeHandlers;
 	Vector<AnimationType> animationTypes;
 	
 	
@@ -64,7 +62,6 @@ public class Cleansanity {
 		effectTypes = new Vector<EffectType>();
 		entityTypes = new Vector<String>();
 		skeletonTypes = new Vector<String>();
-		skeletonTypeHandlers = new Vector<JSSkeletonTypeHandler>();
 		animationTypes = new Vector<AnimationType>();
 		
 		entities = new Vector<Entity>();
@@ -107,15 +104,17 @@ public class Cleansanity {
 		entityTypes.add(name);
 	}
 	
-	public void addSkeletonType(String name , JSSkeletonTypeHandler handler){
+	public void addSkeletonType(String name){
 		skeletonTypes.add(name);
-		skeletonTypeHandlers.add(handler);
 	}
 	
 	public JSExecutor getJSExecutor(){
 		return jsExecutor;
 	}
 	
+	public Vector<Entity> getEntities(){
+		return entities;
+	}
 	
 	
 }

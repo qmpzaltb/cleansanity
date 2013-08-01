@@ -2,7 +2,10 @@ package qmpzaltb.cleansanity.logic;
 
 import java.util.Vector;
 
+import javax.swing.text.Position;
+
 import qmpzaltb.cleansanity.Cleansanity;
+import qmpzaltb.cleansanity.graphics.GameMainWindow;
 
 
 public class Entity{
@@ -24,6 +27,9 @@ public class Entity{
 	
 	private float xPosition;
 	private float yPosition;
+	private float zPosition;
+	
+	private float heading;
 	
 	private float size;
 	private float speed;
@@ -35,6 +41,10 @@ public class Entity{
 		meters = new Vector<Meter>();
 		meterDefinedNames = new Vector<String>();
 		actions = new Vector<String>();
+		
+		xPosition = x;
+		yPosition = y;
+		zPosition = 0;
 		
 	}
 	
@@ -100,7 +110,7 @@ public class Entity{
 	}
 	
 	public void setSkeleton(String skeletonName){
-		//TODO define skeleton
+		entitySkeleton = new Skeleton();
 	}
 	
 	public void setSize(float entitySize){
@@ -109,6 +119,14 @@ public class Entity{
 	
 	public float getSize(){
 		return size;
+	}
+	
+	public Skeleton getSkeleton(){
+		return entitySkeleton;
+	}
+	
+	public void drawSkeleton(){
+		entitySkeleton.drawLimbs(xPosition * GameMainWindow.tileSize, yPosition * GameMainWindow.tileSize, zPosition * GameMainWindow.tileSize, heading);
 	}
 	
 }

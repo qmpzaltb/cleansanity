@@ -74,18 +74,18 @@ public class JSExecutor {
 				fr = new FileReader(jsFile);
 				System.out.println("Current file: " + jsFile.getName());
 				
-//				if (jsEngine instanceof Compilable)
-//				{
-//					System.out.println("Compiling....");
-//					Compilable compEngine = (Compilable)jsEngine;
-//					CompiledScript cs = compEngine.compile(fr);
-//					cs.eval(binds);
-//					System.out.println(cs.getEngine() == jsEngine);
-//					
-//				}
-//				else {
+				if (jsEngine instanceof Compilable)
+				{
+					System.out.println("Compiling....");
+					Compilable compEngine = (Compilable)jsEngine;
+					CompiledScript cs = compEngine.compile(fr);
+					cs.eval(binds);
+					System.out.println(cs.getEngine() == jsEngine);
+					
+				}
+				else {
 					jsEngine.eval(fr, binds);
-//				}
+				}
 				//jsEngine.eval(fr , binds);
 				fr.close();
 			} catch (FileNotFoundException e) {

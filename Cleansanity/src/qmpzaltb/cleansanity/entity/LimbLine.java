@@ -3,105 +3,136 @@ package qmpzaltb.cleansanity.entity;
 import static org.lwjgl.opengl.GL11.glBegin;
 import static org.lwjgl.opengl.GL11.glEnd;
 import static org.lwjgl.opengl.GL11.glColor4f;
-import static org.lwjgl.opengl.GL11.glVertex3d;
+import static org.lwjgl.opengl.GL11.glVertex3f;
 import static org.lwjgl.opengl.GL11.glLineWidth;
 
 import org.lwjgl.opengl.GL11;
 
+import qmpzaltb.cleansanity.graphics.GameMainWindow;
+
 public class LimbLine extends Limb{
 	
-	double limbX1;
-	double limbX2;
-	double limbY1;
-	double limbY2;
+	float limbX1;
+	float limbX2;
+	
+	float limbY1;
+	float limbY2;
+	
+	float limbZ1;
+	float limbZ2;
 	
 	float limbWidth;
 	
-	double attachX;
-	double attachY;
-	double attachHeading;
+	float attachX;
+	float attachY;
+	float attachZ;
+	float attachHeading;
 	
 	float colR;
 	float colG;
 	float colB;
 	float colA;
 
-	public double getAttachX() {
+	public float getAttachX() {
 		return limbX2;
 	}
 
-	public double getAttachY() {
+	public float getAttachY() {
 		return limbY2;
 	}
+	
+	public float getAttachZ(){
+		return limbZ2;
+	}
 
-	public double getAttachHeading() {
+	public float getAttachHeading() {
 		return 0;
 	}
 
-	public double getLimbSize() {
-		return (double)limbWidth;
+	public float getLimbSize() {
+		return limbWidth;
 	}
 
-	public double getLimbRotation() {
+	public float getLimbRotation() {
 		return 0;
 		
 	}
 
-	public void setLimbX1(double x1) {
+	public void setLimbX1(float x1) {
 		limbX1 = x1;
 	}
 
-	public void setLimbY1(double y1) {
+	public void setLimbY1(float y1) {
 		limbY1 = y1;		
 	}
 
-	public void setLimbX2(double x2) {
+	public void setLimbX2(float x2) {
 		limbX2 = x2;
 	}
 
-	public void setLimbY2(double y2) {
+	public void setLimbY2(float y2) {
 		limbY2 = y2;
 	}
 
-	public void setAttachX(double ax) {
+	public void setAttachX(float ax) {
 		attachX = ax;
 	}
 
-	public void setAttachY(double ay) {
+	public void setAttachY(float ay) {
 		attachY = ay;
 	}
+	public void setAttachZ(float az){
+		attachZ = az;
+	}
 
-	public void setAttachHeading(double ah) {
+	public void setAttachHeading(float ah) {
 		attachHeading = ah;
 		
 	}
 
-	public void setLimbSize(double size) {
+	public void setLimbSize(float size) {
 		limbWidth = (float)size;
 	}
 
-	public void setLimbRotation(double rotation) {
-		//Method intentionally left blank
-		//Rotation does not apply to lines.
-	}
-
-	public void setColor(float r, float g, float b, float a) {
+	public void setColour(float r, float g, float b, float a) {
 		colR = r;
 		colG = g;
 		colB = b;
 		colA = a;
 	}
 
-	public void drawLimb() {
+	public void drawLimb(float x, float y, float z, float heading) {
 		
 		//OpenGL-gasm for you all who dont understand OpenGL
 		glColor4f(colR, colG, colB, colA); //Sets the color of the OpenGL drawing mechanism
 		glLineWidth(limbWidth); //Sets the width of a line in OpenGL
 		glBegin(GL11.GL_LINE_STRIP); //Tells OpenGL to start drawing a line strip...
-		glVertex3d(limbX1, limbY1, qmpzaltb.cleansanity.graphics.GLSettings.entityRenderZ); //... between these vertices
-		glVertex3d(limbX2, limbY2, qmpzaltb.cleansanity.graphics.GLSettings.entityRenderZ);
+		glVertex3f(x + limbX1* GameMainWindow.tileSize, y + limbY1* GameMainWindow.tileSize, z + limbZ1* GameMainWindow.tileSize); //... between these vertices
+		glVertex3f(x + limbX2* GameMainWindow.tileSize, y + limbY2* GameMainWindow.tileSize, z + limbZ2* GameMainWindow.tileSize);
 		glEnd();	//And here we end the drawing of the line strip
 		
+	}
+
+	public void setLimbTo(float... limbCoords) {
+		if (limbCoords != null){
+			if (limbCoords.length == 6){
+				limbX1 = limbCoords[0];
+				limbY1 = limbCoords[1];
+				limbZ1 = limbCoords[2];
+				limbX2 = limbCoords[3];
+				limbY2 = limbCoords[4];
+				limbZ2 = limbCoords[5];
+			} else {
+				System.out.println("Inappropriate argument amount in setting limb line.");
+				
+			}
+			
+		}
+		
+	}
+
+	public void setLimbHeading(float heading) {
+		// Nothing interesting happens (You can't change the heading of a line)
 	}
 
 

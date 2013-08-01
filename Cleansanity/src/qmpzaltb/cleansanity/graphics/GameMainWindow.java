@@ -2,6 +2,7 @@ package qmpzaltb.cleansanity.graphics;
 
 import java.awt.FontFormatException;
 import java.io.IOException;
+import java.util.Vector;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
@@ -15,6 +16,7 @@ import org.newdawn.slick.util.ResourceLoader;
 
 import qmpzaltb.cleansanity.Cleansanity;
 import qmpzaltb.cleansanity.input.GameAction;
+import qmpzaltb.cleansanity.logic.Entity;
 import qmpzaltb.cleansanity.map.MapArea;
 
 /**
@@ -171,7 +173,7 @@ public class GameMainWindow {
 					int x2 = x1 + tileSize;
 					int y1 = currentYRes - y * tileSize;
 					int y2 = y1 - tileSize;
-					int z1 = -1000;
+					int z1 = 0;
 					int z2 = z1 + tileHeight;
 
 					if (setGLColour(theMap.getTile(x, y).getFloorColour())){
@@ -228,7 +230,21 @@ public class GameMainWindow {
 
 				}
 			}
-
+			
+			
+			
+			Vector<Entity> entities = theSanity.getEntities();
+			for (int i = 0; i < entities.size(); i ++){
+				if (entities.get(i) != null){
+					if (entities.get(i).getSkeleton() != null){
+						entities.get(i).drawSkeleton();
+						
+					}
+				}
+				
+				
+			}
+			
 
 
 

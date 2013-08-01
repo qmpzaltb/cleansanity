@@ -20,9 +20,7 @@ public class JSSanityHandler {
 	
 	public void define_skeleton_type(String skeleton){
 		System.out.println("JSSanityHandler: Defining " + skeleton);
-		JSSkeletonTypeHandler handler = new JSSkeletonTypeHandler();
-		jsExecutor.makeBind(skeleton , handler);
-		sanity.addSkeletonType(skeleton , handler);
+		sanity.addSkeletonType(skeleton);
 		jsExecutor.evaluate(skeleton + " = new Object();");
 		
 	}

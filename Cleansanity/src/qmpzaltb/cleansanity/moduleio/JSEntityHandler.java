@@ -1,5 +1,6 @@
 package qmpzaltb.cleansanity.moduleio;
 
+import qmpzaltb.cleansanity.Cleansanity;
 import qmpzaltb.cleansanity.logic.Entity;
 import qmpzaltb.cleansanity.logic.Meter;
 
@@ -11,11 +12,12 @@ public class JSEntityHandler {
 	public JSSkeletonHandler SKELETON;
 	
 	public JSEntityHandler(){
-
+		SKELETON = new JSSkeletonHandler();
 	}
 
 	public void setScope(Entity scope){
 		entityScope = scope;
+		SKELETON.setSkeletonScope(entityScope.getSkeleton());
 		meterScope = null;
 	}
 
@@ -29,6 +31,10 @@ public class JSEntityHandler {
 	
 	public void set_speed(float speed){
 		entityScope.setSpeed(speed);
+	}
+	
+	public void set_size(float size){
+		entityScope.setSize(size);
 	}
 
 	public void define_meter(String meterDefinedName){
@@ -105,7 +111,8 @@ public class JSEntityHandler {
 	
 	public void define_skeleton(String skeletonName){
 		entityScope.setSkeleton(skeletonName);
-		SKELETON = new JSSkeletonHandler();
+		SKELETON.setSkeletonScope(entityScope.getSkeleton());
+		Cleansanity.getSanity().getJSExecutor().evaluate(skeletonName + ".on_create();");
 	}
 	
 
