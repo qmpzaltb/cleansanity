@@ -126,7 +126,7 @@ public class Entity{
 	}
 	
 	public void drawSkeleton(){
-		entitySkeleton.drawLimbs(xPosition * GameMainWindow.tileSize, yPosition * GameMainWindow.tileSize, zPosition * GameMainWindow.tileSize, heading);
+		entitySkeleton.drawLimbs(xPosition * GameMainWindow.tileSize, - yPosition * GameMainWindow.tileSize, zPosition * GameMainWindow.tileSize, heading);
 	}
 	
 }

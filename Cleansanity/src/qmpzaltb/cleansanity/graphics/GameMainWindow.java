@@ -171,7 +171,7 @@ public class GameMainWindow {
 
 					int x1 = x * tileSize;
 					int x2 = x1 + tileSize;
-					int y1 = currentYRes - y * tileSize;
+					int y1 = - y * tileSize;
 					int y2 = y1 - tileSize;
 					int z1 = 0;
 					int z2 = z1 + tileHeight;

@@ -70,7 +70,7 @@ public class Cleansanity {
 		jsExecutor.loadModule();
 		
 		long makeHumanTime = System.currentTimeMillis();
-		entities.add(jsExecutor.makeEntity(new Entity(10.5f , 10.5f) , "human"));
+		entities.add(jsExecutor.makeEntity(new Entity(11.5f , 10.5f) , "human"));
 		entities.add(jsExecutor.makeEntity(new Entity(12.5f , 12.5f) , "human"));
 		System.out.println(System.currentTimeMillis() - makeHumanTime);
 		
