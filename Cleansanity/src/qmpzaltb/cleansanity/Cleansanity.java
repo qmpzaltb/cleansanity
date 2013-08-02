@@ -19,102 +19,110 @@ import qmpzaltb.cleansanity.moduleio.JSExecutor;
  * "Things" include: everything in-game.
  */
 public class Cleansanity {
-	
+
 	private static Cleansanity theSanity; //This is what keeps us sane.
 	private long currentGameTime;
-	
+
 	JSExecutor jsExecutor;
-	
-//	GrandMap theGrandMap;
+
+	//	GrandMap theGrandMap;
 	MapArea theCurrentMap;
-	
+
 	//All the "types" of things. Like, player characters are types, and sprinting is a type.
 	Vector<ActionType> actionTypes;
 	Vector<EffectType> effectTypes;
 	Vector<String> entityTypes;
 	Vector<String> skeletonTypes;
 	Vector<AnimationType> animationTypes;
-	
-	
+
+
 	//You might be asking, why all this in multiple arrays? For fun.
 	Vector<Entity> entities;
 	Vector<Effect> effects;
 	Vector<Skeleton> skeletons;
-	
+
 	Entity thePlayerEntity; //A duplicate of the one in theEntities vector! Woo! This is so we know who we are controlling.
-	
+
 	public static void setSanity(String modulePath){
-		
+
 		theSanity = new Cleansanity();
 		theSanity.initializeSanity(modulePath);
-		
-	}
-	
-	public Cleansanity(){
-		
-	}
-	
-	public void initializeSanity(String modulePath){
-		
 
-		
+	}
+
+	public Cleansanity(){
+
+	}
+
+
+
+	public void initializeSanity(String modulePath){
+
+
+
 		actionTypes = new Vector<ActionType>();
 		effectTypes = new Vector<EffectType>();
 		entityTypes = new Vector<String>();
 		skeletonTypes = new Vector<String>();
 		animationTypes = new Vector<AnimationType>();
-		
+
 		entities = new Vector<Entity>();
-		
+
 		jsExecutor = new JSExecutor(modulePath);
 		jsExecutor.loadModule();
-		
+
 		long makeHumanTime = System.currentTimeMillis();
 		entities.add(jsExecutor.makeEntity(new Entity(11.5f , 10.5f) , "human"));
 		entities.add(jsExecutor.makeEntity(new Entity(12.5f , 12.5f) , "human"));
 		System.out.println(System.currentTimeMillis() - makeHumanTime);
-		
+
 		//theGrandMap equals something. Make a grand map
 		//theGrandMap = new GrandMap();
-		
+
 		theCurrentMap = new MapArea(0);
 		MapGeneration.generateTerrain(theCurrentMap);
-		
+
 		//theEntities equals something. Make an entities.
-		
+
 		//thePlayerEntity is something. Something something the somethings.
-		
+
 	}
-	
-	
+
+
 	public MapArea getCurrentMap(){
 		return theCurrentMap;
 	}
-	
-	
+
+
 	public static Cleansanity getSanity(){
 		return theSanity;
 	}
-	
+
 	public long getTime(){
 		return currentGameTime;
 	}
-	
+
 	public void addEntityType(String name){
 		entityTypes.add(name);
 	}
-	
+
 	public void addSkeletonType(String name){
 		skeletonTypes.add(name);
 	}
-	
+
 	public JSExecutor getJSExecutor(){
 		return jsExecutor;
 	}
-	
+
 	public Vector<Entity> getEntities(){
 		return entities;
 	}
-	
-	
+
+	public void doGameLoopIteration(){
+		for (Entity entity : entities){
+			jsExecutor.updateEntity(entity);
+		}
+	}
+
+
 }

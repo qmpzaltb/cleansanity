@@ -115,5 +115,8 @@ public class JSEntityHandler {
 		Cleansanity.getSanity().getJSExecutor().evaluate(skeletonName + ".on_create();");
 	}
 	
+	public float get_meter_level(){
+		return meterScope.getMeterLevel();
+	}
 
 }

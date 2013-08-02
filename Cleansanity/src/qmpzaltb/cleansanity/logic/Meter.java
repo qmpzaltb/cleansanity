@@ -81,5 +81,9 @@ public class Meter{
 		meterDisplayPriority = priority;
 	}
 	
+	public float getMeterLevel(){
+		return currentMeterLevel;
+	}
+	
 	
 }

@@ -36,8 +36,13 @@ public class RunSanity {
 		
 		//The game loop! Loops the game processes so that they can happen again, and again, and again.
 		while (!GameMainWindow.isCloseRequested()){
+		
 			GameMainWindow.updateGraphics();
 			KeyboardHandler.handleKeys();
+			long loopTime = System.currentTimeMillis();
+			Cleansanity.getSanity().doGameLoopIteration();
+			System.out.print("Time for game loop (ms): ");
+			System.out.println(System.currentTimeMillis() - loopTime);
 		}
 		
 		System.exit(0);

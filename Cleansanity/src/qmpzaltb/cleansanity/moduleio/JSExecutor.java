@@ -134,6 +134,10 @@ public class JSExecutor {
 		binds.put(bindString , bindObject);
 	}
 	
+	public void updateEntity(Entity toUpdate){
+		entityHandlerTHIS.setScope(toUpdate);
+		evaluate(toUpdate.getUpdateString());
+	}
 	
 	
 	
