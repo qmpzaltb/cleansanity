@@ -74,6 +74,12 @@ public class Cleansanity {
 		long makeHumanTime = System.currentTimeMillis();
 		entities.add(jsExecutor.makeEntity(new Entity(11.5f , 10.5f) , "human"));
 		entities.add(jsExecutor.makeEntity(new Entity(12.5f , 12.5f) , "human"));
+		entities.add(jsExecutor.makeEntity(new Entity(13.5f , 12.5f) , "human"));
+		entities.add(jsExecutor.makeEntity(new Entity(14.5f , 12.5f) , "human"));
+		entities.add(jsExecutor.makeEntity(new Entity(14.5f , 13.5f) , "human"));
+		entities.add(jsExecutor.makeEntity(new Entity(14.5f , 14.5f) , "human"));
+		entities.add(jsExecutor.makeEntity(new Entity(14.5f , 15.5f) , "human"));
+		entities.add(jsExecutor.makeEntity(new Entity(14.5f , 16.5f) , "human"));
 		System.out.println(System.currentTimeMillis() - makeHumanTime);
 
 		//theGrandMap equals something. Make a grand map
