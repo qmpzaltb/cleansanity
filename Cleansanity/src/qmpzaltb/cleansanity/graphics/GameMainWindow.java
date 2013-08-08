@@ -148,6 +148,7 @@ public class GameMainWindow {
 		// DEBUG statement
 		drawingGame = true;
 		
+		long timebegin = System.currentTimeMillis();
 		
 		float xyRatio = (float)(currentXRes) / (float)(currentYRes);
 		//GL11.glFrustum( xyRatio * -1, xyRatio, -1.0, 1.0, 1.5, 10000);
@@ -315,6 +316,9 @@ public class GameMainWindow {
 		}
 		
 		Display.update();
+		
+		System.out.println("Time for graphics loop (ms): " + (System.currentTimeMillis() - timebegin));
+		
 		Display.sync(framesPerSecond);
 		//GL11.glFlush();
 		
