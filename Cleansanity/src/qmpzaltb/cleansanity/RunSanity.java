@@ -13,13 +13,19 @@ import org.lwjgl.input.Keyboard;
  * Class dedicated to the main method
  * Handles arguments, and initialization.
  * May potentially handle checksums as well.
+ * 
+ * @author qmpzaltb
  */
 public class RunSanity {
 
 	static String[] arguments;
 	static String modulePath;
 	
-	
+	/**
+	 * Runs everything as intended, provided the circumstances are correct.
+	 * 
+	 * @param args Program arguments.
+	 */
 	public static void main(String[] args){
 		
 		arguments = new String[]{"-module:cleansanity"};
@@ -49,7 +55,10 @@ public class RunSanity {
 		
 	}
 	
-	public static void handleArguments(){
+	/**
+	 * Method dedicated to the handling of arguments.
+	 */
+	private static void handleArguments(){
 		
 		for (String argument : arguments){
 			if (argument.startsWith("-module:")){

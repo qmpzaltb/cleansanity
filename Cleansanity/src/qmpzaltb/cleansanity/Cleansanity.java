@@ -15,8 +15,9 @@ import qmpzaltb.cleansanity.moduleio.FileLister;
 import qmpzaltb.cleansanity.moduleio.JSExecutor;
 
 /**
- * Main class that holds all of the game's "things".
- * "Things" include: everything in-game.
+ * Represents an instance of the game.
+ * 
+ * @author qmpzaltb
  */
 public class Cleansanity {
 
@@ -43,6 +44,11 @@ public class Cleansanity {
 
 	Entity thePlayerEntity; //A duplicate of the one in theEntities vector! Woo! This is so we know who we are controlling.
 
+	/**
+	 * Sets the static Cleansanity object to a new Cleansanity object made from the given module path.
+	 * 
+	 * @param modulePath a String of a name of a folder inside the module directory
+	 */
 	public static void setSanity(String modulePath){
 
 		theSanity = new Cleansanity();
@@ -95,23 +101,47 @@ public class Cleansanity {
 	}
 
 
+	/**
+	 * Returns the MapArea of the game instance.
+	 * 
+	 * @return a MapArea of the game instance
+	 */
 	public MapArea getCurrentMap(){
 		return theCurrentMap;
 	}
 
-
+	/**
+	 * Returns the static game instance.
+	 * 
+	 * @return the Cleansanity object representing the game instance
+	 */
 	public static Cleansanity getSanity(){
 		return theSanity;
 	}
 
+	/**
+	 * Returns the game's internal time.
+	 * 
+	 * @return a long representing the game's internal time
+	 */
 	public long getTime(){
 		return currentGameTime;
 	}
 
+	/**
+	 * Adds a new type of entity by the name provided.
+	 * 
+	 * @param name the name of the type of entity to add
+	 */
 	public void addEntityType(String name){
 		entityTypes.add(name);
 	}
 
+	/**
+	 * Adds a new type of skeleton by the name provided.
+	 * 
+	 * @param name the name of the type of skeleton to add
+	 */
 	public void addSkeletonType(String name){
 		skeletonTypes.add(name);
 	}
