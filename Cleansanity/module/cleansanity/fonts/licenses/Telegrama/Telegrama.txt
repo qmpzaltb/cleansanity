@@ -1,4 +1,0 @@
-Telegrama is designed by Yamaoka Yasuhiro 1992.
-
-More information available at:
-http://yoworks.com/telegrama/index.html
