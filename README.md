@@ -2,8 +2,12 @@ Cleansanity
 ===========
 
 Recreating and improving the ideas of qmpzaltb/cptgame. Libraries! Time! Profanities in the code!
+But now we're starting all over again. Whee!
 
-Feature list (?)(!)
+This time, things will be different.
+This time, commentation.
+
+Feature list
 
 (NC) - No clue how to get this to work
 (NS) - Not started
@@ -15,39 +19,40 @@ Feature list (?)(!)
 (...)** - Needs rework
 
 Primary Goals
-  - Map generation (DONE)**
+  - Map generation
     - The current map generator has the tendency to create unreachable areas.
     - Also the map generator should have some sort of .txt modification to it. SCALABILITY.
-  - Input (MC)
+  - Input
     - Mouse still needs to be done, but that should be easy (NS)
   - Graphics
-    - 3D Map display (DONE?)
-    - Heads-Up-Display GUI (NS)
-    - Bind camera to entity (NS)
-    - Main menu (NS)
-  - Entities (BS)
+    - 3D Map display
+    - Heads-Up-Display GUI
+    - Bind camera to entity (GLU(NS) or manual(NC)?)
+    - Main menu
+  - Entities
     - They should be easily moddable
   
 Secondary Goals
-  - Super scalability/Ease of modding/Modding API (NC/NS)
-    - Something where you can put a text file and BAM, new enemy. (NC)
-  - Map 'high' features (NS)
-    - Fluid simulation (NS)
-    - Navier-Stokes if I can even understand how it works. (NC)
-  - Multiplayer support (NC)
+  - Super scalability/Ease of modding/Modding API
+    - Something where you can put a text file or something and BAM, new enemy.
+    - Maybe some form of .jar loading system, like those fancy Minecraft mod loaders.
+  - Map 'high' features
+    - Fluid simulation
+    - Navier-Stokes if I can even understand how it works.
+  - Multiplayer support
     - Maybe use the singleplayer-server idea of Minecraft?
-  - Upgrades (NC)
-    - Items (NC)
-    - Levels? (NC) [Maybe scrap levels and just leave it at skills]
-    - Skills (NC) [As in, you improve your individual skills rather than an arbitrary level]
+  - Upgrades
+    - Items 
+    - Levels? [Maybe scrap levels and just leave it at skills]
+    - Skills [As in, you improve your individual skills rather than an arbitrary level]
   - Better graphics
-    - Lighting (NS/NC)
+    - Lighting
 
-Super Ambitious Goals of Unattainability (NC)
+Super Ambitious Goals of Unattainability
   - Procedurally generated textures
     - Because pre-made textures are of the devil.
     - Also I can't make textures.
-  - Entity mind-switch (NC)
+  - Entity mind-switch
     - Play as another entity, in the middle of the game. Just... switch.
-  - Entity "uniqueness" (NC/NS)
-    - A more powerful dirty bubble, without needing to create powerfuldirtybubble.txt
+  - Entity "uniqueness"
+    - A more powerful dirty bubble, without needing to create a powerfuldirtybubble.txt
