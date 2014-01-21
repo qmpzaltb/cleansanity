@@ -23,6 +23,7 @@ public class DisplayHandler implements Runnable {
 
 	private static DisplayHandler dh;
 
+	private FontHandler fh;
 	private Vector<Displayable> attachedScreens;
 	private boolean displayScreen;
 	private boolean screenDisplayed;
@@ -34,6 +35,7 @@ public class DisplayHandler implements Runnable {
 		attachedScreens = new Vector<Displayable>();
 		displayWidth = 640;
 		displayHeight = 480;
+		fh = new FontHandler();
 	}
 
 	/**
@@ -123,6 +125,9 @@ public class DisplayHandler implements Runnable {
 		Display.setResizable(true);
 		Display.setTitle("Cleansanity - Please variablize this title in the code. Please. ");
 
+		//TODO Move font generation to Display thread neatly.
+		attachRenderScreen(new DMainMenu());
+		
 		while (!endRequested) {
 
 			if (screenDisplayed) {
@@ -132,7 +137,7 @@ public class DisplayHandler implements Runnable {
 					displayHeight = Display.getHeight();
 					ConsoleLog.debug("xScreen: " + displayWidth);
 					ConsoleLog.debug("yScreen: " + displayHeight);
-					//resetDisplayMode(displayWidth, displayHeight);
+//					resetDisplayMode(displayWidth, displayHeight);
 				}
 
 				for (Displayable screen : dh.attachedScreens) {

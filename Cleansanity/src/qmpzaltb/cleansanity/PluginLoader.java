@@ -19,7 +19,7 @@ import java.util.zip.ZipInputStream;
 public class PluginLoader {
 
 	public static final String PLUGIN_DIRECTORY_NAME = "plugins";
-
+	//TODO Migrate console outputs to ConsoleLog format.
 	/**
 	 * Loads all Class objects from all .jar and .zip files in the plugins directory.
 	 * 

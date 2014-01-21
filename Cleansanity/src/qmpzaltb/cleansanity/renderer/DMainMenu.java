@@ -1,5 +1,7 @@
 package qmpzaltb.cleansanity.renderer;
 
+import java.awt.FontFormatException;
+import java.io.IOException;
 import java.io.InputStream;
 
 import org.lwjgl.opengl.GL11;
@@ -18,7 +20,15 @@ public class DMainMenu implements Displayable {
 	 * 
 	 */
 	public DMainMenu() {
-		InputStream fontInput = ResourceLoader.getResourceAsStream("font/Ubuntu-M.ttf");
+		InputStream fontInputStream = ResourceLoader.getResourceAsStream("font/Ubuntu-M.ttf");
+		try {
+			guiFontAWT = java.awt.Font.createFont(java.awt.Font.TRUETYPE_FONT, fontInputStream);
+			guiFontSLICK = new TrueTypeFont(guiFontAWT.deriveFont(24f) , false);
+		} catch (FontFormatException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -31,7 +41,7 @@ public class DMainMenu implements Displayable {
 		GL11.glMatrixMode(GL11.GL_MODELVIEW);
 		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 		GL11.glColor3f(0.5f, 0.2f, 0.9f);
-
+		guiFontSLICK.drawString(100, 200, "ClEEEEEEEan not IN$$4AANAInity.", org.newdawn.slick.Color.magenta);
 		GL11.glBegin(GL11.GL_QUADS);
 		GL11.glVertex2f(midX - 50, midY - 50);
 		GL11.glVertex2f(midX - 50, midY + 50);

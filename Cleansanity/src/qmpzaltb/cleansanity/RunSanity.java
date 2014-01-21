@@ -11,7 +11,7 @@ public class RunSanity {
 		ConsoleLog.addStream(System.err, false, false, true);
 		
 		DisplayHandler.initialize();
-		DisplayHandler.attachRenderScreen(new DMainMenu());
+//		DisplayHandler.attachRenderScreen(new DMainMenu());
 		DisplayHandler.showScreen();
 	}
 
