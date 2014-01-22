@@ -23,7 +23,7 @@ public class DisplayHandler implements Runnable {
 
 	private static DisplayHandler dh;
 
-	private FontHandler fh;
+	private Fonts fh;
 	private Vector<Displayable> attachedScreens;
 	private boolean displayScreen;
 	private boolean screenDisplayed;
@@ -35,7 +35,7 @@ public class DisplayHandler implements Runnable {
 		attachedScreens = new Vector<Displayable>();
 		displayWidth = 640;
 		displayHeight = 480;
-		fh = new FontHandler();
+		fh = new Fonts();
 	}
 
 	/**
@@ -124,9 +124,6 @@ public class DisplayHandler implements Runnable {
 		}
 		Display.setResizable(true);
 		Display.setTitle("Cleansanity - Please variablize this title in the code. Please. ");
-
-		//TODO Move font generation to Display thread neatly.
-		attachRenderScreen(new DMainMenu());
 		
 		while (!endRequested) {
 
@@ -164,6 +161,9 @@ public class DisplayHandler implements Runnable {
 				try {
 					Display.create();
 					screenDisplayed = true;
+					if (!Fonts.isInitialized()){
+						Fonts.initialize();
+					}
 				} catch (LWJGLException e) {
 					ConsoleLog.error("Unable to create LWJGL display!");
 					ConsoleLog.error("Is the device unable to run LWJGL?");
