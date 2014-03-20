@@ -1,4 +1,4 @@
-Cleansanity
+Cleansanity (AWT Legacy Edition)
 ===========
 
 Recreating and improving the ideas of qmpzaltb/cptgame. Libraries! Time! Profanities in the code!
