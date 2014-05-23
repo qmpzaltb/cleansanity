@@ -1,13 +1,25 @@
-Cleansanity (AWT Legacy Edition)
+Cleansanity
 ===========
+
+Changing Literally Everything AgainN edition.
 
 Recreating and improving the ideas of qmpzaltb/cptgame. Libraries! Time! Profanities in the code!
 But now we're starting all over again. Whee!
+And then we shall start ONCE AGAIN.
+
+"perfection stems from persistence" - qmpzaltb
+"making your quote seem poignant is of utmost importance when writing poignant quotes" - qmpzaltb
 
 This time, things will be different.
 This time, commentation.
+This time, a slightly better understanding of object-oriented principles.
 
 Feature list
+
+TODO - turn the feature list into a feature TABLE. YES.
+we're doing it. (maybe)
+
+LEGACY FEATURE LIST from oldsanity v3
 
 (NC) - No clue how to get this to work
 (NS) - Not started
