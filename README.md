@@ -16,55 +16,26 @@ This time, a slightly better understanding of object-oriented principles.
 
 Feature list
 
-TODO - turn the feature list into a feature TABLE. YES.
-we're doing it. (maybe)
-
-LEGACY FEATURE LIST from oldsanity v3
-
-(NC) - No clue how to get this to work
-(NS) - Not started
-(BS) - Barely started
-(WIP) - Work in progress
-(MC) - Mostly complete
-(DONE) - Finished
-(...)* - Could be better
-(...)** - Needs rework
-
-Primary Goals
   - Map generation
-    - The current map generator has the tendency to create unreachable areas.
-    - Also the map generator should have some sort of .txt modification to it. SCALABILITY.
+    - Currently uses a butchered (inefficient) version of Prim's algorithm to create a tree-like map
   - Input
-    - Mouse still needs to be done, but that should be easy (NS)
+    - Yeah that needs to be done too. Very basic version exists right now where "QWERASDF ARROW KEYS" controls the camera location and rotation.
   - Graphics
-    - 3D Map display
-    - Heads-Up-Display GUI
-    - Bind camera to entity (GLU(NS) or manual(NC)?)
-    - Main menu
+    - Shaders need to be written
+    - Before that, though, shaders need to be learned
   - Entities
-    - They should be easily moddable
-  
-Secondary Goals
-  - Super scalability/Ease of modding/Modding API
-    - Something where you can put a text file or something and BAM, new enemy.
-    - Maybe some form of .jar loading system, like those fancy Minecraft mod loaders.
-  - Map 'high' features
-    - Fluid simulation
-    - Navier-Stokes if I can even understand how it works.
-  - Multiplayer support
-    - Maybe use the singleplayer-server idea of Minecraft?
-  - Upgrades
-    - Items 
-    - Levels? [Maybe scrap levels and just leave it at skills]
-    - Skills [As in, you improve your individual skills rather than an arbitrary level]
-  - Better graphics
-    - Lighting
-
-Super Ambitious Goals of Unattainability
-  - Procedurally generated textures
-    - Because pre-made textures are of the devil.
-    - Also I can't make textures.
-  - Entity mind-switch
-    - Play as another entity, in the middle of the game. Just... switch.
-  - Entity "uniqueness"
-    - A more powerful dirty bubble, without needing to create a powerfuldirtybubble.txt
+    - The bane of object-oriented programming. How to make entities follow proper OOP principles?
+    - Currently uses a spaghetti version of controllers (intelligences), actions, and flags.
+      - Controllers can be an AI, user input-based, a network connection, or whatever else can be though of
+  - Scalability
+  - High map features
+    - For a later time
+  - Multiplayer
+    - Current idea is to use entity controllers on a network level.
+  - Entity Upgrades & Upgrade GUI
+    - And also HUD
+  - Items
+    - Because the code needs more spaghetti to distinguish entities from items on the ground.
+  - Modularity
+    - Jar loaders are the current general direction.
+  - Graphics
