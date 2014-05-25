@@ -3,6 +3,8 @@ Cleansanity
 
 Changing Literally Everything AgainN edition.
 
+obligatory screenshot: [map generation and display](http://i.imgur.com/EQdhzj6.jpg)
+
 Recreating and improving the ideas of qmpzaltb/cptgame. Libraries! Time! Profanities in the code!
 But now we're starting all over again. Whee!
 And then we shall start ONCE AGAIN.
